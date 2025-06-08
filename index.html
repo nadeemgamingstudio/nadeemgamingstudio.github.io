@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nadeem Gaming Studio</title>
-  <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon">
+  <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
   <style>
     body {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: #000;
+      color: #fff;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -16,17 +16,17 @@
 
     .navbar {
       background-color: #111;
-      padding: 15px;
+      padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
+      gap: 20px;
       border-bottom: 2px solid #222;
     }
 
     .navbar a {
       text-decoration: none;
       color: #fff;
-      margin-right: 20px;
       font-weight: bold;
     }
 
@@ -37,10 +37,10 @@
     }
 
     .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-      text-align: center;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 30px;
+      text-align: left;
     }
 
     .game-image {
@@ -54,39 +54,45 @@
       margin-top: 30px;
     }
 
-    .profile {
-      margin-top: 50px;
-    }
-
-    .profile img {
-      width: 100px;
-      border-radius: 50%;
-    }
-
-    .profile-name {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    .highlight {
-      color: #f06;
-    }
-
     p {
       line-height: 1.6;
       margin: 10px 0;
       color: #ddd;
+    }
+
+    /* Profile section center aligned */
+    .profile-center {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .profile-center img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-center h2 {
+      margin: 10px 0 5px 0;
+    }
+
+    .profile-center p {
+      margin: 4px 0;
+    }
+
+    .highlight {
+      color: #f20544;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
   <div class="navbar">
-    <div><img src="nadeemgamingstudio.ico" alt="Logo" width="30"></div>
-    <div>
-      <a href="#" class="active">Home</a>
-      <a href="#">Blog</a>
-    </div>
+    <img src="nadeemgamingstudio.ico" alt="Logo" width="30" />
+    <a href="#" class="active">Home</a>
+    <a href="#">Blog</a>
   </div>
 
   <div class="container">
@@ -107,13 +113,14 @@
     <p>Thank you for visiting Nadeem Gaming Studio. We’re just getting started — and the best is yet to come.</p>
 
     <p>🚀 Let’s Play, Let’s Imagine, Let’s Create Together!</p>
+  </div>
 
-    <div class="profile">
-      <img src="https://nadeemgamingstudio.github.io/Nadeem.png" alt="Nadeem Photo">
-      <div class="profile-name">Nadeem</div>
-      <p>Game developer</p>
-      <p><span class="highlight">Creative indie developer crafting fun, unique games with heart.</span></p>
-    </div>
+  <!-- Center aligned profile section -->
+  <div class="profile-center">
+    <img src="https://nadeemgamingstudio.github.io/Nadeem.png" alt="Nadeem Photo">
+    <h2>Nadeem</h2>
+    <p>Game developer</p>
+    <p class="highlight">Creative indie developer crafting fun, unique games with heart.</p>
   </div>
 
 </body>
