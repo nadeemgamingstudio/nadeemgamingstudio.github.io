@@ -44,38 +44,35 @@
     }
 
     .game-gallery {
-    display: flex;
-    flex-wrap: nowrap; 
-    overflow-x: auto; 
-    gap: 20px;
-    padding: 20px;
-    scroll-snap-type: x mandatory;
-  }
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
 
-  .game-box {
-    flex: 0 0 auto; 
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    transition: transform 0.3s;
-    scroll-snap-align: start;
-  }
+    .game-box {
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
 
-  .game-box img {
-    width: 160px;
-    height: 160px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 2px solid #555;
-  }
+    .game-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #555;
+    }
 
-  .game-gallery::-webkit-scrollbar {
-    height: 6px;
-  }
+    .game-box:hover {
+      transform: scale(1.05);
+    }
 
-  .game-gallery::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 6px;
+    .game-box p {
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     .section-title {
