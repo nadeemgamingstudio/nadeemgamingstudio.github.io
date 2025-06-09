@@ -43,9 +43,36 @@
       text-align: left;
     }
 
-    .game-image {
+    .game-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .game-box {
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .game-box img {
       width: 200px;
-      border-radius: 10px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid #555;
+    }
+
+    .game-box:hover {
+      transform: scale(1.05);
+    }
+
+    .game-box p {
+      margin-top: 10px;
+      font-weight: bold;
     }
 
     .section-title {
@@ -60,7 +87,6 @@
       color: #ddd;
     }
 
-    /* Profile section center aligned */
     .profile-center {
       text-align: center;
       margin-top: 50px;
@@ -95,10 +121,29 @@
     <a href="#">Blog</a>
   </div>
 
-  <div class="container">
-    <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" class="game-image" alt="Cat vs Mouse Rain">
-    <p>Cat vs Mouse Rain</p>
+  <!-- 🎮 Game Gallery on Top -->
+  <div class="game-gallery"> 
+    <!-- Game 1 -->
+    <a href="game1.html" class="game-box">
+      <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain" />
+      <p>Cat vs Mouse Rain</p>
+    </a>
 
+    <!-- Game 2 -->
+    <a href="game2.html" class="game-box">
+      <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Game 2" />
+      <p>Coming Soon 1</p>
+    </a>
+
+    <!-- Game 3 -->
+    <a href="game3.html" class="game-box">
+      <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Game 3" />
+      <p>Coming Soon 2</p>
+    </a>
+  </div>
+
+  <!-- About Section -->
+  <div class="container">
     <div class="section-title">🎮 About Nadeem Gaming Studio</div>
     <p><strong>Welcome to Nadeem Gaming Studio – Where Creativity Meets Play!</strong></p>
 
@@ -115,7 +160,7 @@
     <p>🚀 Let’s Play, Let’s Imagine, Let’s Create Together!</p>
   </div>
 
-  <!-- Center aligned profile section -->
+  <!-- Profile Section -->
   <div class="profile-center">
     <img src="https://nadeemgamingstudio.github.io/Nadeem.png" alt="Nadeem Photo">
     <h2>Nadeem</h2>
