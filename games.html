@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="2aLXWXxR4swyZqs_5IfoNyqTdIX5C7wwk_ed8AV03ss" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nadeem Gaming Studio</title>
+  <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #111;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #222;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .navbar a.active {
+      background-color: #f06;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 30px;
+      text-align: left;
+    }
+
+    .game-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .game-box {
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .game-box img {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid #555;
+    }
+
+    .game-box p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: #fbd534;
+      margin-top: 30px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 10px 0;
+      color: #ddd;
+    }
+
+    .profile-center {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .profile-center img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-center h2 {
+      margin: 10px 0 5px 0;
+    }
+
+    .profile-center p {
+      margin: 4px 0;
+    }
+
+    .highlight {
+      color: #f20544;
+      font-weight: bold;
+    }
+
+    h3 {
+      margin: 25px 0 10px;
+      color: #fbd534;
+    }
+
+    ul {
+      margin: 10px 0 20px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .content-wrapper {
+      flex: 1; /* 👈 Footer को नीचे धकेलने के लिए */
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #666;
+      background-color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="nadeemgamingstudio.ico" alt="Logo" width="30" />
+    <a href="https://nadeemgamingstudio.github.io">HOME</a>
+    <a href="https://nadeemgamingstudio.github.io/games">GAMES</a>
+    <a href="https://nadeemgamingstudio.github.io/privacy">PRIVACY</a>
+  </div>
+
+  <!-- 🎮 Game + Content Wrapper -->
+  <div class="content-wrapper">
+
+    <!-- 🎮 Game Gallery on Top -->
+    <div class="game-gallery"> 
+      <!-- Game 1 -->
+      <a href="https://nadeemgamingstudio.github.io/catvsmouserain" class="game-box">
+        <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain" />
+        <p>Cat vs Mouse Rain</p>
+      </a>
+
+      <!-- Game 2 -->
+      <a href="https://nadeemgamingstudio.github.io/guessspellopic" class="game-box">
+        <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Guess SpelloPic" />
+        <p>Guess SpelloPic</p>
+      </a>
+      
+      
+    </div>
+
+    <!-- 📝 About Section -->
+    <div class="container">
+      <!-- आपका अन्य टेक्स्ट या कंटेंट यहां डाल सकते हैं -->
+    </div>
+
+  </div> <!-- end of .content-wrapper -->
+
+  <!-- 📌 Sticky Footer -->
+  <div class="footer">
+    &copy; 2025 Nadeem Gaming Studio
+  </div>
+
+</body>
+</html>
