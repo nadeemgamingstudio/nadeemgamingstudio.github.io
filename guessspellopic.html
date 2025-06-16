@@ -6,55 +6,109 @@
   <title>Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</title>
   <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
+      display: flex;
+      flex-direction: column;
       background-color: #000;
       color: white;
       font-family: Arial, sans-serif;
-      padding: 0px;
     }
+
+    .navbar {
+      background-color: #111;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #222;
+    }
+
     .header {
       text-align: center;
+      margin-top: 20px;
     }
+
     .header img {
       max-width: 200px;
       border-radius: 20px;
-      margin: 1px;
+      margin: 10px 0;
     }
+
+    .section-title {
+      font-size: 1rem;
+      color: #fbd534;
+      margin: 10px 0;
+    }
+
     .content {
       max-width: 900px;
       margin: 40px auto;
       text-align: left;
       font-size: 16px;
       line-height: 1.8;
+      flex: 1;
     }
+
+    h3 {
+      margin: 25px 0 10px;
+      color: #fbd534;
+    }
+
+    p {
+      margin: 10px 0 20px;
+    }
+
+    ul {
+      margin: 10px 0 20px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
     a {
       display: inline-block;
-      margin-top: 0px;
+      margin-top: 10px;
       color: #00ccff;
       text-decoration: none;
     }
+
     .back-home {
       text-align: center;
+      margin: 30px 0;
     }
-    .section-title {
-      font-size: 1rem;
-      color: #fbd534;
-      margin-top: 10px;
-    }
-        .footer {
+
+    .footer {
       text-align: center;
-      padding: 20px;
+      padding: 10px;
       font-size: 14px;
       color: #666;
+      background-color: #111;
     }
   </style>
 </head>
 <body>
+  <div class="navbar">
+    <img src="nadeemgamingstudio.ico" alt="Logo" width="60" />
+    <a href="https://nadeemgamingstudio.github.io" class="active">HOME</a>
+    <a href="https://nadeemgamingstudio.github.io/games">GAMES</a>
+    <a href="https://nadeemgamingstudio.github.io/privacy">PRIVACY</a>
+  </div>
 
   <div class="header">
     <h2>"Learn spellings by guessing words from real-life pictures! A fun A–Z word game."</h2>
     <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Game Image" />
-    <br />
     <div class="section-title">📥 Download Guess SpelloPic today — make spelling fun again!</div>
     <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" target="_blank">
       <img src="https://nadeemgamingstudio.github.io/GooglePlayLogo.png" alt="Get it on Google Play" />
@@ -62,9 +116,9 @@
   </div>
 
   <div class="content">
-<title>Guess SpelloPic – Picture Word Puzzle Game</title>
+    <title>Guess SpelloPic – Picture Word Puzzle Game</title>
+    
     <h3>🧩 Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</h3>
-
     <p><strong>Looking for a fun and educational word game?</strong><br>
     Guess SpelloPic is the perfect choice for children and learners of all ages!<br>
     Learn new words, improve spelling, and boost memory — all by identifying real pictures!</p>
@@ -72,29 +126,29 @@
     <h3>🔠 What’s Inside the Game?</h3>
     <h3>👶 A to Z Alphabet Learning</h3>
     <ul>
-        <li>26 unique levels, one for each English alphabet letter (A–Z)</li>
-        <li>Each level shows a real picture and you must spell the word correctly using letter blocks</li>
+      <li>26 unique levels, one for each English alphabet letter (A–Z)</li>
+      <li>Each level shows a real picture and you must spell the word correctly using letter blocks</li>
     </ul>
 
     <h3>📸 Image-Based Word Categories</h3>
     <p>Learn hundreds of words by identifying pictures from these fun categories:</p>
     <ul>
-        <li>🐛 <strong>Insects & Bugs</strong> – 20 real-life images</li>
-        <li>🍎 <strong>Fruits</strong> – 60 colorful fruit photos</li>
-        <li>🥦 <strong>Vegetables</strong> – 20 fresh veggie images</li>
-        <li>👕 <strong>Clothes</strong> – 20 items from daily wear</li>
-        <li>🐘 <strong>Animals</strong> – 100 amazing animal images</li>
-        <li>🐦 <strong>Birds</strong> – 20 feathered friends to identify</li>
+      <li>🐛 <strong>Insects & Bugs</strong> – 20 real-life images</li>
+      <li>🍎 <strong>Fruits</strong> – 60 colorful fruit photos</li>
+      <li>🥦 <strong>Vegetables</strong> – 20 fresh veggie images</li>
+      <li>👕 <strong>Clothes</strong> – 20 items from daily wear</li>
+      <li>🐘 <strong>Animals</strong> – 100 amazing animal images</li>
+      <li>🐦 <strong>Birds</strong> – 20 feathered friends to identify</li>
     </ul>
 
     <h3>🎯 Game Features</h3>
     <ul>
-        <li>✔️ Easy gameplay: tap, spell, and learn</li>
-        <li>🖼️ Bright, high-quality images</li>
-        <li>🎓 Boosts vocabulary, spelling & memory</li>
-        <li>👶 Kid-friendly and safe design</li>
-        <li>📱 Works offline and on all screen sizes</li>
-        <li>🚫 No time limit — learn at your own pace</li>
+      <li>✔️ Easy gameplay: tap, spell, and learn</li>
+      <li>🖼️ Bright, high-quality images</li>
+      <li>🎓 Boosts vocabulary, spelling & memory</li>
+      <li>👶 Kid-friendly and safe design</li>
+      <li>📱 Works offline and on all screen sizes</li>
+      <li>🚫 No time limit — learn at your own pace</li>
     </ul>
 
     <h3>🌟 Why Kids & Parents Love Guess SpelloPic</h3>
@@ -106,14 +160,14 @@
     <h3>⭐⭐⭐⭐⭐</h3>
     <p><strong>अगर आपको गेम पसंद आए, तो प्लीज़ 5 स्टार रेटिंग देना न भूलें!<br>
     आपके सुझाव हमें बेहतर बनाते हैं।</strong></p>
-    
-  <div class="back-home">
-    <a href="https://nadeemgamingstudio.github.io">← Back to Home</a>
-  </div>
-  
-        <div class="footer">
-    &copy; 2025 Nadeem Gaming Studio | Cat vs Mouse Rain
+
+    <div class="back-home">
+      <a href="https://nadeemgamingstudio.github.io">← Back to Home</a>
+    </div>
   </div>
 
+  <div class="footer">
+    &copy; 2025 Nadeem Gaming Studio
+  </div>
 </body>
 </html>
