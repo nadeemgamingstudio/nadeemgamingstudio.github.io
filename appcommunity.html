@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>टेस्टर मार्केटप्लेस</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Mobile App Shell Styling */
+        body {
+            background-color: #0F172A; /* Slate-900 */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .app-shell {
+            width: 100%;
+            max-width: 420px; /* Standard Mobile Viewport */
+            min-height: 100vh;
+            background-color: #1F2937; /* Gray-800 */
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent horizontal scroll */
+            position: relative; /* Context for fixed children */
+        }
+        .app-card {
+            transition: transform 0.1s;
+        }
+        .app-card:active {
+            transform: scale(0.98);
+        }
+
+        /* * फिक्स्ड हेडर और फ़ुटर के लिए जगह बनाने के लिए मेन कंटेंट एरिया में पैडिंग।
+         * हेडर 64px (h-16) है और बॉटम नेविगेशन 64px (h-16) है।
+         */
+        #content-area {
+            flex-grow: 1;
+            overflow-y: auto;
+            /* Header height (16 = 4rem = 64px) + some buffer */
+            padding-top: 5rem; 
+            /* Footer height (16 = 4rem = 64px) + some buffer */
+            padding-bottom: 5rem; 
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Permanent Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px; /* Match app-shell width */
+            z-index: 50;
+        }
+        /* Permanent Footer/Bottom Nav */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px; /* Match app-shell width */
+            z-index: 50;
+        }
+
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <!-- App Shell (Mobile View) -->
+    <div class="app-shell">
+        
+        <!-- Header / App Bar (PERMANENTLY FIXED) -->
+        <header class="bg-gray-900 h-16 px-4 shadow-2xl flex justify-between items-center border-b border-gray-700">
+            <h1 id="app-title" class="text-xl font-extrabold text-teal-400">Tester Hub</h1>
+            <nav id="nav-area" class="flex space-x-2">
+                <!-- Navigation will be injected here -->
+            </nav>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <main id="content-area">
+            <!-- Content will be injected here -->
+            <div class="flex flex-col items-center justify-center h-full min-h-[300px]">
+                <div class="text-xl text-gray-400 animate-pulse">सिस्टम शुरू हो रहा है...</div>
+            </div>
+        </main>
+        
+        <!-- Bottom Tab Bar (PERMANENTLY FIXED - NOW ALWAYS VISIBLE) -->
+        <footer id="bottom-nav" class="bg-gray-900 border-t border-gray-700 shadow-2xl h-16 hidden">
+            <div class="flex justify-around items-center h-full">
+                <!-- Home Button -->
+                <button onclick="renderView('home')" class="nav-button flex flex-col items-center text-teal-400 hover:text-teal-300 transition-colors duration-200 p-1">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.63 0 .85-.75.31-1.11L12.92 2.3c-.38-.27-.92-.27-1.3 0L2.99 11.89c-.54.36-.32 1.11.31 1.11H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z"/></svg>
+                    <span class="text-xs mt-1">होम</span>
+                </button>
+                
+                <!-- Upload Button (Plus Button) -->
+                <button onclick="renderView('upload')" class="nav-button -mt-6 flex flex-col items-center p-3 bg-teal-600 rounded-full text-white shadow-xl hover:bg-teal-700 transition duration-200 ring-4 ring-gray-900">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+
+                <!-- Profile Button -->
+                <button onclick="renderView('profile')" class="nav-button flex flex-col items-center text-gray-400 hover:text-teal-400 transition-colors duration-200 p-1">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <span class="text-xs mt-1">प्रोफ़ाइल</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals and Overlays -->
+    <div id="modal-container"></div>
+
+
+    <!-- Firebase SDKs (v8) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+    <script>
+        // --- 1. Firebase और App Setup ---
+        let app;
+        let auth;
+        let db;
+        let storage;
+        let userId = null;
+        let userName = 'Guest';
+        let userEmail = 'anonymous';
+
+        // ग्लोबल वेरिएबल्स जो Canvas द्वारा प्रदान किए जाते हैं
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfigString = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // कॉन्स्टेंट
+        const UPLOAD_COST = 100;
+        const TEST_REWARD = 25;
+        const EXPIRATION_HOURS = 24;
+
+        /**
+         * एक सरल Modal (संदेश बॉक्स) दिखाता है।
+         */
+        function showModal(title, message, isError = false) {
+            const container = document.getElementById('modal-container');
+            const color = isError ? 'border-red-500 text-red-400' : 'border-teal-500 text-teal-400';
+            const buttonColor = isError ? 'bg-red-600 hover:bg-red-700' : 'bg-teal-600 hover:bg-teal-700';
+
+            container.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-2xl max-w-xs w-full border ${color} transform transition-all duration-300">
+                        <h3 class="text-xl font-bold mb-4">${title}</h3>
+                        <p class="text-gray-300 mb-6">${message}</p>
+                        <button onclick="closeModal()" class="w-full ${buttonColor} text-gray-900 font-bold py-2 rounded-lg transition duration-150 shadow-md">ठीक है</button>
+                    </div>
+                </div>
+            `;
+            setTimeout(closeModal, 5000);
+        }
+
+        function closeModal() {
+            document.getElementById('modal-container').innerHTML = '';
+        }
+
+        /**
+         * Firebase सेवाओं को इनिशियलाइज़ करता है और Auth को संभालता है।
+         */
+        async function initializeFirebase() {
+            try {
+                const firebaseConfig = JSON.parse(firebaseConfigString);
+                if (Object.keys(firebaseConfig).length === 0) {
+                    // अगर कॉन्फ़िगरेशन नहीं है, तो सिर्फ Auth स्क्रीन दिखाएं (क्योंकि Firestore काम नहीं करेगा)
+                    // यह सिर्फ कैनवास एनवायरनमेंट में __firebase_config की उपलब्धता सुनिश्चित करने के लिए है।
+                    // अगर कॉन्फ़िग नहीं है, तो Auth स्क्रीन दिखाएं और आगे न बढ़ें।
+                    renderView('auth');
+                    return; 
+                }
+
+                app = firebase.initializeApp(firebaseConfig);
+                auth = firebase.auth();
+                db = firebase.firestore();
+                storage = firebase.storage();
+                
+                // Auth Listener
+                auth.onAuthStateChanged(async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        userEmail = user.email || 'anonymous';
+                        await ensureUserDocument(user);
+                        renderView('home');
+                        document.getElementById('bottom-nav').classList.remove('hidden');
+                    } else if (initialAuthToken) {
+                        await auth.signInWithCustomToken(initialAuthToken);
+                    } else {
+                        // यदि टोकन नहीं है, तो लॉगिन स्क्रीन दिखाएं
+                        renderView('auth');
+                    }
+                });
+
+            } catch (error) {
+                console.error("Firebase Initialization Error:", error);
+                // Auth स्क्रीन दिखाएं भले ही Firebase में कोई त्रुटि हो (Firebase न होने पर भी UI लोड हो जाए)
+                renderView('auth'); 
+                showModal('सिस्टम त्रुटि', 'Firebase शुरू करने में त्रुटि: ' + error.message, true);
+            }
+        }
+
+        /**
+         * यह सुनिश्चित करता है कि Firestore में उपयोगकर्ता के लिए एक एंट्री है।
+         */
+        async function ensureUserDocument(user) {
+            const userRef = db.collection(`artifacts/${appId}/users/${user.uid}/user_data`).doc('profile');
+            try {
+                const doc = await userRef.get();
+                if (!doc.exists) {
+                    await userRef.set({
+                        email: user.email || userEmail,
+                        name: user.displayName || 'नया उपयोगकर्ता',
+                        tokens: 150, // नए उपयोगकर्ता को स्टार्टिंग टोकन दें
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    userName = user.displayName || 'नया उपयोगकर्ता';
+                } else {
+                    const data = doc.data();
+                    userName = data.name || user.displayName || 'Tester';
+                }
+            } catch (error) {
+                console.error("Error ensuring user document:", error);
+            }
+        }
+
+        // --- 2. Navigation और View Rendering ---
+
+        function renderView(viewName, data = null) {
+            const contentArea = document.getElementById('content-area');
+            const appTitle = document.getElementById('app-title');
+            
+            // Content area को खाली करें, लेकिन नेविगेशन बार फिक्स रहेगा
+            contentArea.innerHTML = '';
+            appTitle.textContent = 'Tester Hub'; 
+
+            // Active Tab Visual Feedback
+            document.querySelectorAll('.nav-button').forEach(button => {
+                // Remove active classes
+                button.classList.remove('text-teal-400');
+                button.classList.add('text-gray-400');
+            });
+            const activeNavButton = document.querySelector(`#bottom-nav button[onclick="renderView('${viewName}')"]`);
+            if(activeNavButton) {
+                 activeNavButton.classList.add('text-teal-400');
+                 activeNavButton.classList.remove('text-gray-400');
+            }
+            // अपलोड बटन को विशेष रूप से हैंडल करें
+            const uploadButton = document.querySelector('#bottom-nav button[onclick="renderView(\'upload\')"]');
+            if(uploadButton) {
+                if (viewName === 'upload') {
+                    // Active state for plus button
+                    uploadButton.classList.add('bg-teal-400', 'text-gray-900', 'ring-teal-500');
+                    uploadButton.classList.remove('bg-teal-600', 'text-white', 'ring-gray-900');
+                } else {
+                    // Inactive state for plus button
+                    uploadButton.classList.remove('bg-teal-400', 'text-gray-900', 'ring-teal-500');
+                    uploadButton.classList.add('bg-teal-600', 'text-white', 'ring-gray-900');
+                }
+            }
+
+
+            // View के अनुसार सामग्री लोड करें
+            switch (viewName) {
+                case 'home':
+                    appTitle.textContent = 'टेस्टिंग मार्केटप्लेस';
+                    renderHomeScreen(contentArea);
+                    document.getElementById('bottom-nav').classList.remove('hidden');
+                    break;
+                case 'upload':
+                    appTitle.textContent = 'नया ऐप लिस्ट करें';
+                    renderUploadScreen(contentArea);
+                    document.getElementById('bottom-nav').classList.remove('hidden');
+                    break;
+                case 'details':
+                    appTitle.textContent = data.appName;
+                    renderAppDetails(contentArea, data);
+                    // **********************************************
+                    // FIX: Details page पर भी बॉटम नेविगेशन अब हमेशा ON रहेगा।
+                    // document.getElementById('bottom-nav').classList.add('hidden'); // Removed this line
+                    document.getElementById('bottom-nav').classList.remove('hidden');
+                    // **********************************************
+                    break;
+                case 'profile':
+                    appTitle.textContent = 'मेरा प्रोफ़ाइल';
+                    renderProfileScreen(contentArea);
+                    document.getElementById('bottom-nav').classList.remove('hidden');
+                    break;
+                case 'auth':
+                    document.getElementById('bottom-nav').classList.add('hidden');
+                    renderAuthScreen(contentArea);
+                    break;
+                default:
+                    renderError(contentArea, 'पेज नहीं मिला');
+            }
+        }
+
+        // --- 3. Auth, Logout & Handlers ---
+        function renderAuthScreen(container) {
+            container.innerHTML = `
+                <div class="w-full max-w-sm mx-auto p-8 bg-gray-700 rounded-xl shadow-2xl mt-12">
+                    <h2 class="text-3xl font-extrabold text-white mb-6 text-center">लॉगिन/साइनअप</h2>
+                    <form id="auth-form" class="space-y-4">
+                        <input type="email" id="auth-email" placeholder="ईमेल" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <input type="password" id="auth-password" placeholder="पासवर्ड" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <button type="submit" data-action="login" id="auth-submit" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-3 rounded-lg transition duration-150 shadow-md">लॉगिन करें</button>
+                    </form>
+                    <p class="text-center mt-4 text-gray-400">
+                        नया अकाउंट? 
+                        <a href="#" id="toggle-auth" class="text-teal-400 hover:text-teal-200 font-medium">साइनअप करें</a>
+                    </p>
+                    <div id="auth-message" class="mt-4 text-center text-red-400"></div>
+                </div>
+            `;
+            document.getElementById('auth-form').addEventListener('submit', handleAuthSubmit);
+            document.getElementById('toggle-auth').addEventListener('click', toggleAuthMode);
+
+            let isLoginMode = true;
+            function toggleAuthMode(e) {
+                e.preventDefault();
+                isLoginMode = !isLoginMode;
+                const submitButton = document.getElementById('auth-submit');
+                const toggleLink = document.getElementById('toggle-auth');
+                const formTitle = document.querySelector('.w-full h2');
+
+                if (isLoginMode) {
+                    submitButton.textContent = 'लॉगिन करें';
+                    submitButton.setAttribute('data-action', 'login');
+                    toggleLink.textContent = 'साइनअप करें';
+                    formTitle.textContent = 'लॉगिन/साइनअप';
+                } else {
+                    submitButton.textContent = 'नया अकाउंट बनाएँ';
+                    submitButton.setAttribute('data-action', 'signup');
+                    toggleLink.textContent = 'लॉगिन पर वापस जाएँ';
+                    formTitle.textContent = 'लॉगिन/साइनअप';
+                }
+            }
+        }
+
+        async function handleAuthSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            const action = document.getElementById('auth-submit').getAttribute('data-action');
+            const messageEl = document.getElementById('auth-message');
+            const submitButton = document.getElementById('auth-submit');
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'प्रक्रिया जारी है...';
+
+            try {
+                if (action === 'login') {
+                    await auth.signInWithEmailAndPassword(email, password);
+                } else {
+                    await auth.createUserWithEmailAndPassword(email, password);
+                }
+                showModal('सफलता', 'आप सफलतापूर्वक लॉगिन हो गए हैं!');
+            } catch (error) {
+                console.error("Auth Error:", error);
+                messageEl.textContent = 'त्रुटि: ' + error.message;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = action === 'login' ? 'लॉगिन करें' : 'नया अकाउंट बनाएँ';
+            }
+        }
+
+        function handleLogout() {
+            auth.signOut().then(() => {
+                document.getElementById('bottom-nav').classList.add('hidden');
+                renderView('auth');
+                showModal('लॉगआउट', 'आप सफलतापूर्वक लॉगआउट हो गए हैं।');
+            }).catch((error) => {
+                showModal('त्रुटि', 'लॉगआउट में समस्या: ' + error.message, true);
+            });
+        }
+
+        // --- 4. Home Screen (App Listing) ---
+        function renderHomeScreen(container) {
+            container.innerHTML = `
+                <!-- Wallet Widget -->
+                <div id="wallet-info" class="p-4 bg-gray-700 rounded-xl mb-6 flex justify-between items-center shadow-lg border-l-4 border-teal-500">
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span class="text-lg font-medium text-gray-300">आपका बैलेंस</span>
+                    </div>
+                    <span id="token-balance" class="text-3xl font-extrabold text-yellow-400 animate-pulse">...</span>
+                </div>
+                
+                <h2 class="text-xl font-bold mb-4 text-white">टेस्टिंग के लिए उपलब्ध ऐप्स</h2>
+                <div id="app-list" class="space-y-4 w-full">
+                    <div class="text-center text-gray-400 p-8">ऐप्स लोड हो रहे हैं...</div>
+                </div>
+            `;
+            streamUserTokens();
+            streamAppListings();
+        }
+
+        function streamUserTokens() {
+            if (!userId) return;
+            // Firestore data path for private user data
+            const tokenRef = db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile');
+            tokenRef.onSnapshot(doc => {
+                const balanceEl = document.getElementById('token-balance');
+                if (balanceEl && doc.exists) {
+                    const data = doc.data();
+                    const tokens = data.tokens || 0;
+                    balanceEl.textContent = `${tokens}`;
+                    userName = data.name || userName;
+                    userEmail = data.email || userEmail;
+                    
+                    // Profile screen update (if visible)
+                    const profileBalanceEl = document.getElementById('profile-token-balance');
+                    if (profileBalanceEl) {
+                        profileBalanceEl.textContent = `${tokens}`;
+                    }
+                }
+            }, (error) => { console.error("Token Stream Error:", error); });
+        }
+
+        function streamAppListings() {
+            // Firestore data path for public app data
+            const appsRef = db.collection(`artifacts/${appId}/public/data/app_listings`);
+            
+            appsRef.onSnapshot(snapshot => {
+                const appListEl = document.getElementById('app-list');
+                if (!appListEl) return;
+
+                const now = Date.now();
+                const cutoffTime = now - (EXPIRATION_HOURS * 60 * 60 * 1000);
+
+                let validApps = [];
+
+                snapshot.docs.forEach(doc => {
+                    const data = doc.data();
+                    // Ensure postedAt is treated as a Firestore Timestamp
+                    const postedAtMillis = data.postedAt?.toMillis() || 0;
+                    
+                    if (postedAtMillis > cutoffTime) {
+                        // 24 घंटे के भीतर पोस्ट किया गया - मान्य है
+                        validApps.push({ id: doc.id, ...data });
+                    }
+                });
+
+                // सबसे नए को सबसे ऊपर दिखाएं (Latest first)
+                validApps.sort((a, b) => b.postedAt.toMillis() - a.postedAt.toMillis());
+
+                if (validApps.length === 0) {
+                    appListEl.innerHTML = '<div class="text-center text-gray-400 p-8 bg-gray-700 rounded-xl shadow-md">अभी टेस्टिंग के लिए कोई ऐप उपलब्ध नहीं है।</div>';
+                } else {
+                    let appCardsHtml = '';
+                    validApps.forEach(app => {
+                        appCardsHtml += renderAppCard(app);
+                    });
+                    appListEl.innerHTML = appCardsHtml;
+                }
+                
+            }, (error) => {
+                console.error("App List Stream Error:", error);
+                if (document.getElementById('app-list')) {
+                    document.getElementById('app-list').innerHTML = '<div class="text-center text-red-400 p-8 bg-gray-700 rounded-xl shadow-md">ऐप लिस्ट लोड करने में त्रुटि।</div>';
+                }
+            });
+        }
+
+        function renderAppCard(app) {
+            const timeSincePost = Math.floor((Date.now() - app.postedAt.toMillis()) / 3600000); // hours
+            const timeRemaining = EXPIRATION_HOURS - timeSincePost;
+            
+            return `
+                <div class="app-card bg-gray-700 p-4 rounded-xl shadow-lg border-b-2 border-teal-500 flex items-center space-x-4 cursor-pointer"
+                     onclick='renderView("details", ${JSON.stringify({ id: app.id, ...app })})'>
+                    
+                    <!-- App Icon Placeholder -->
+                    <div class="w-14 h-14 bg-teal-500 rounded-xl flex items-center justify-center text-2xl font-bold text-gray-900 shadow-inner">
+                        ${app.appName ? app.appName.charAt(0) : 'A'}
+                    </div>
+
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-lg font-semibold text-white truncate">${app.appName || 'अज्ञात ऐप'}</h3>
+                        <p class="text-sm text-gray-400 truncate">डेवलपर: ${app.developerName || 'अज्ञात'}</p>
+                        <p class="text-xs text-yellow-400 mt-1">
+                            रिवॉर्ड: ${app.tokens || TEST_REWARD} टोकन
+                            <span class="text-gray-400 ml-2">(${timeRemaining > 0 ? timeRemaining : 0} घंटे शेष)</span>
+                        </p>
+                    </div>
+                    
+                    <div class="text-right ml-4">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        // --- 5. Upload App Screen ---
+        function renderUploadScreen(container) {
+            container.innerHTML = `
+                <div class="w-full max-w-lg mx-auto">
+                    <div class="p-4 bg-yellow-900 border border-yellow-500 text-yellow-200 rounded-xl mb-6">
+                        <p class="font-bold text-lg mb-2">लिस्टिंग लागत:</p>
+                        <p class="text-sm">यह ऐप <span class="font-bold">${EXPIRATION_HOURS} घंटों</span> के लिए लाइव रहेगा। आपके बैलेंस से <span class="font-bold">${UPLOAD_COST} टोकन</span> काट लिए जाएंगे।</p>
+                    </div>
+
+                    <form id="upload-form" class="space-y-4 p-5 bg-gray-700 rounded-xl shadow-2xl">
+                        <!-- Icon Upload Field - Only text input for file name/url for simplicity -->
+                        <div class="p-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-400 text-sm">
+                            ऐप आइकॉन अपलोड (Placeholder): आइकन के रूप में ऐप नाम का पहला अक्षर उपयोग किया जाएगा।
+                        </div>
+
+                        <input type="text" id="app-name" placeholder="1. ऐप का नाम" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <input type="text" id="dev-name" value="${userName}" placeholder="2. आपका नाम (डेवलपर)" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <input type="url" id="play-store-link" placeholder="3. Google Play टेस्टिंग URL (e.g., https://play.google.com/store/apps/details?id=...)" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <input type="url" id="group-link" placeholder="4. Google Group जॉइन URL" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required>
+                        <textarea id="app-description" placeholder="5. ऐप का संक्षिप्त विवरण और टेस्टिंग के निर्देश" rows="5" class="w-full p-3 bg-gray-900 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 text-white" required></textarea>
+                        
+                        <button type="submit" id="upload-submit" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-3 rounded-lg transition duration-150 shadow-lg">लिस्टिंग सबमिट करें</button>
+                    </form>
+                    <div id="upload-message" class="mt-4 text-center text-red-400"></div>
+                </div>
+            `;
+
+            document.getElementById('upload-form').addEventListener('submit', handleUploadSubmit);
+        }
+
+        async function handleUploadSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('app-name').value;
+            const devName = document.getElementById('dev-name').value;
+            const link = document.getElementById('play-store-link').value;
+            const groupLink = document.getElementById('group-link').value;
+            const description = document.getElementById('app-description').value;
+            const messageEl = document.getElementById('upload-message');
+            const submitButton = document.getElementById('upload-submit');
+            messageEl.textContent = '';
+            
+            submitButton.disabled = true;
+            submitButton.textContent = 'अपलोड हो रहा है...';
+
+            try {
+                // 1. 24 घंटे की लिमिट चेक करें
+                const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
+                const userAppsSnapshot = await db.collection(`artifacts/${appId}/public/data/app_listings`)
+                    .where('postedByUid', '==', userId)
+                    .get();
+
+                const recentApp = userAppsSnapshot.docs.find(doc => {
+                    const postedAtMillis = doc.data().postedAt?.toMillis() || 0;
+                    return postedAtMillis > yesterday.getTime();
+                });
+
+                if (recentApp) {
+                    showModal('अपलोड विफल', 'आप दिन में केवल एक ऐप अपलोड कर सकते हैं। कृपया 24 घंटे बाद पुनः प्रयास करें।', true);
+                    return;
+                }
+
+                // 2. टोकन बैलेंस चेक करें
+                const userRef = db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile');
+                const userDoc = await userRef.get();
+                const currentTokens = userDoc.data()?.tokens || 0;
+
+                if (currentTokens < UPLOAD_COST) {
+                    showModal('टोकन कम', `आपके पास पर्याप्त टोकन नहीं हैं। लिस्ट करने के लिए ${UPLOAD_COST} टोकन चाहिए।`, true);
+                    return;
+                }
+
+                // 3. Firestore Batch Operation
+                const batch = db.batch();
+                
+                // A. App Listing जोड़ें
+                const appRef = db.collection(`artifacts/${appId}/public/data/app_listings`).doc();
+                const newApp = {
+                    appName: name,
+                    developerName: devName,
+                    playStoreLink: link,
+                    googleGroupLink: groupLink,
+                    description: description,
+                    postedByUid: userId,
+                    postedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    tokens: TEST_REWARD, 
+                    testerCount: 0,
+                    iconUrl: name.charAt(0) 
+                };
+                batch.set(appRef, newApp);
+
+                // B. डेवलपर के टोकन काटें
+                batch.update(userRef, {
+                    tokens: firebase.firestore.FieldValue.increment(-UPLOAD_COST)
+                });
+
+                await batch.commit();
+
+                showModal('सफलता!', 'आपका ऐप सफलतापूर्वक लिस्ट कर दिया गया है।');
+                renderView('home');
+
+            } catch (error) {
+                console.error("Upload Error:", error);
+                messageEl.textContent = 'अपलोड में त्रुटि: ' + error.message;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'लिस्टिंग सबमिट करें';
+            }
+        }
+        
+        // --- 6. App Details / Testing Flow Screen ---
+        
+        async function renderAppDetails(container, appData) {
+            // Loading and back button logic is here
+
+            // Helper to extract package ID from URL
+            const getPackageId = (url) => {
+                const match = url.match(/id=([^&]+)/);
+                return match ? match[1] : null;
+            };
+
+            const packageId = getPackageId(appData.playStoreLink);
+            
+            // Tester Status Load
+            const statusDoc = await db.collection(`artifacts/${appId}/users/${userId}/tested_apps`).doc(appData.id).get();
+            const status = statusDoc.exists ? statusDoc.data().status : 0; // 0: Not Started
+
+            container.innerHTML = `
+                <div class="w-full mx-auto space-y-6">
+                    <!-- Back Button (For clear navigation when coming from a deep link or back history) -->
+                    <button onclick="renderView('home')" class="flex items-center text-teal-400 hover:text-teal-200 p-2 rounded-lg bg-gray-700/50 mb-4">
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        होम पर वापस (Back)
+                    </button>
+                    
+                    <!-- App Header -->
+                    <div class="flex items-center space-x-4 p-4 bg-gray-700 rounded-xl shadow-inner">
+                         <div class="w-16 h-16 bg-teal-500 rounded-xl flex items-center justify-center text-3xl font-bold text-gray-900 shadow-lg">
+                            ${appData.iconUrl || appData.appName.charAt(0)}
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">${appData.appName}</h2>
+                            <p class="text-sm text-gray-400">डेवलपर: ${appData.developerName}</p>
+                            <p class="text-xs text-yellow-400 mt-1">रिवॉर्ड: ${appData.tokens} टोकन</p>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <h3 class="text-xl font-bold text-white pt-2 border-t border-gray-700">विवरण और निर्देश</h3>
+                    <div class="bg-gray-700 p-4 rounded-xl shadow-inner">
+                        <p class="text-gray-300 whitespace-pre-wrap">${appData.description}</p>
+                    </div>
+
+                    <!-- Steps & Action Button -->
+                    <div id="testing-flow-steps" class="space-y-3">
+                        ${renderTestingSteps(status, appData, packageId)}
+                    </div>
+
+                    <!-- Developer Group Link -->
+                    <p class="text-sm text-gray-400 mt-4">
+                        <a href="${appData.googleGroupLink}" target="_blank" class="text-teal-400 hover:text-teal-200 flex items-center">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-13h-5M3 10h10v10H3V10z"></path></svg>
+                            Google Group जॉइन करें
+                        </a>
+                    </p>
+                </div>
+            `;
+        }
+
+        /**
+         * टेस्टिंग फ्लो के स्टेप्स (UI) और एक्शन बटन को रेंडर करता है।
+         */
+        function renderTestingSteps(status, appData, packageId) {
+            // Intent URL for 'Open App'
+            const intentUrl = packageId ? `intent://open#Intent;package=${packageId};end` : '#';
+            
+            const steps = [
+                { id: 1, name: 'Test Now → Play Store पर जाएँ (और ग्रुप जॉइन करें)', action: 'open_store', link: appData.playStoreLink, buttonText: '1. Test Now' },
+                // Android Intent used here to try launching the installed app
+                { id: 2, name: 'Open App → इंस्टॉल किया गया ऐप खोलें', action: 'open_app', link: intentUrl, buttonText: '2. Open App' }, 
+                // Play Store Review link
+                { id: 3, name: 'Give Feedback → Play Store पर रिव्यू दें', action: 'give_feedback', link: packageId ? `market://details?id=${packageId}` : '#', buttonText: '3. Give Feedback' },
+                { id: 4, name: 'Token Collect करें', action: 'collect_tokens', link: null, buttonText: `4. Collect ${TEST_REWARD} Tokens` }
+            ];
+
+            const currentStepIndex = status < steps.length ? status : steps.length - 1;
+            const currentStep = steps[currentStepIndex];
+            
+            const stepHtml = steps.map(step => {
+                const isComplete = status >= step.id;
+                const isActive = status === step.id - 1;
+                const baseClasses = 'p-3 rounded-lg flex items-center transition duration-200 shadow-md';
+                
+                let classes = isComplete ? 'bg-green-700 text-white' : 'bg-gray-700 text-gray-400';
+                classes += isActive ? ' border-l-4 border-teal-500' : '';
+
+                return `
+                    <div class="${classes}">
+                        <svg class="w-6 h-6 mr-3 ${isComplete ? 'text-green-300' : 'text-gray-500'}" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <span class="font-medium">${step.name}</span>
+                    </div>
+                `;
+            }).join('');
+
+            
+            const buttonAction = `handleTestingAction('${currentStep.action}', '${appData.id}', '${currentStep.link}')`;
+            
+            let buttonHtml;
+            if (status < 4) {
+                buttonHtml = `
+                    <button onclick="${buttonAction}" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-4 rounded-xl transition duration-150 shadow-lg mt-6 active:scale-[0.99] flex items-center justify-center">
+                         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        ${currentStep.buttonText}
+                    </button>
+                `;
+            } else {
+                buttonHtml = `
+                    <div class="w-full text-center bg-green-900 border border-green-500 text-green-300 py-4 rounded-xl mt-6 font-bold shadow-lg">
+                        ✅ टेस्टिंग पूरी हुई! टोकन कलेक्टेड।
+                    </div>
+                `;
+            }
+            
+            return stepHtml + buttonHtml;
+        }
+
+        /**
+         * टेस्टिंग फ्लो में अगले स्टेप को हैंडल करता है।
+         */
+        async function handleTestingAction(action, appId, link) {
+            
+            const testedAppRef = db.collection(`artifacts/${appId}/users/${userId}/tested_apps`).doc(appId);
+            const userRef = db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile');
+            
+            let newStatus = 0;
+            let success = false;
+            
+            try {
+                const statusDoc = await testedAppRef.get();
+                const currentStatus = statusDoc.exists ? statusDoc.data().status : 0;
+                newStatus = currentStatus + 1;
+                
+                if (action !== 'collect_tokens' && link && link !== '#') {
+                    // Open App Link / Play Store / Group Link
+                    window.open(link, '_blank');
+                }
+
+                if (action === 'collect_tokens') {
+                    if (currentStatus === 3) {
+                        // 1. टोकन बैलेंस बढ़ाएँ
+                        const batch = db.batch();
+                        batch.update(userRef, {
+                            tokens: firebase.firestore.FieldValue.increment(TEST_REWARD)
+                        });
+                        // 2. टेस्टिंग स्टेटस अपडेट करें
+                        batch.set(testedAppRef, { status: 4, collectedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+                        await batch.commit();
+                        showModal('टोकन कलेक्टेड!', `आपके वॉलेट में ${TEST_REWARD} टोकन जोड़ दिए गए हैं।`, false);
+                        success = true;
+                    } else {
+                        showModal('त्रुटि', 'टोकन कलेक्ट करने से पहले आपको सभी पिछले स्टेप्स (1, 2, 3) पूरे करने होंगे।', true);
+                        success = true; // Rerender UI anyway to show correct status
+                        return;
+                    }
+                } else {
+                    // बीच के स्टेप्स को अपडेट करें (1, 2, 3)
+                    await testedAppRef.set({
+                        status: newStatus,
+                        startedAt: statusDoc.exists ? statusDoc.data().startedAt : firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true });
+                    success = true;
+                }
+            } catch (error) {
+                console.error("Testing Action Error:", error);
+                showModal('त्रुटि', 'प्रक्रिया पूरी नहीं हो सकी। कृपया पुनः प्रयास करें।', true);
+            }
+
+            if (success) {
+                // UI को री-रेंडर करें
+                const appDoc = await db.collection(`artifacts/${appId}/public/data/app_listings`).doc(appId).get();
+                if (appDoc.exists) {
+                    renderView('details', { id: appDoc.id, ...appDoc.data() });
+                } else {
+                    renderView('home');
+                }
+            }
+        }
+
+        // --- 7. Profile Screen ---
+        async function renderProfileScreen(container) {
+
+            // Data Streams are already running, just fetch and display once for the lists
+            let uploadedAppsSnapshot = { size: 0, docs: [] };
+            let testedAppsSnapshot = { size: 0, docs: [] };
+
+            try {
+                 uploadedAppsSnapshot = await db.collection(`artifacts/${appId}/public/data/app_listings`)
+                    .where('postedByUid', '==', userId)
+                    .get();
+
+                 testedAppsSnapshot = await db.collection(`artifacts/${appId}/users/${userId}/tested_apps`)
+                    .where('status', '==', 4)
+                    .get();
+            } catch (error) {
+                console.error("Profile Data Fetch Error:", error);
+            }
+            
+
+            container.innerHTML = `
+                <div class="w-full mx-auto space-y-6">
+                    <!-- Profile Header -->
+                    <div class="p-4 bg-gray-700 rounded-xl shadow-xl flex items-center space-x-4 border-l-4 border-teal-500">
+                        <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center text-3xl font-bold text-gray-900 shadow-inner">
+                            ${userName.charAt(0)}
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">${userName}</h2>
+                            <p class="text-sm text-gray-400">${userEmail}</p>
+                            <p class="text-xs text-gray-500 mt-1">यूज़र ID: ${userId || 'N/A'}</p>
+                        </div>
+                    </div>
+
+                    <!-- Tokens & Actions -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-700 rounded-xl text-center shadow-lg">
+                            <p class="text-xs font-medium text-gray-400">टोकन बैलेंस</p>
+                            <p id="profile-token-balance" class="text-3xl font-extrabold text-yellow-400">...</p>
+                        </div>
+                        <button onclick="handleLogout()" class="p-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg flex items-center justify-center space-x-2 transition duration-150">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-4a3 3 0 013-3h4"></path></svg>
+                            <span>लॉगआउट</span>
+                        </button>
+                    </div>
+
+                    <!-- My Apps (Uploaded) -->
+                    <h3 class="text-xl font-bold text-white pt-2 border-t border-gray-700">मेरे अपलोड किए गए ऐप्स (${uploadedAppsSnapshot.size})</h3>
+                    <div class="bg-gray-700 p-4 rounded-xl space-y-3">
+                        ${uploadedAppsSnapshot.empty 
+                            ? '<p class="text-gray-400">आपने अभी तक कोई ऐप अपलोड नहीं किया है।</p>' 
+                            : uploadedAppsSnapshot.docs.map(doc => `<div class="p-3 bg-gray-800 rounded-lg text-white font-medium flex justify-between items-center"><span>${doc.data().appName}</span> <span class="text-xs text-teal-400">${(new Date(doc.data().postedAt.toMillis())).toLocaleDateString('hi-IN')}</span></div>`).join('')
+                        }
+                    </div>
+
+                    <!-- My Apps (Tested) -->
+                    <h3 class="text-xl font-bold text-white pt-2 border-t border-gray-700">मेरे टेस्ट किए गए ऐप्स (${testedAppsSnapshot.size})</h3>
+                    <div class="bg-gray-700 p-4 rounded-xl space-y-3">
+                        ${testedAppsSnapshot.empty 
+                            ? '<p class="text-gray-400">आपने अभी तक कोई ऐप टेस्ट नहीं किया है।</p>' 
+                            : testedAppsSnapshot.docs.map(doc => `<div class="p-3 bg-gray-800 rounded-lg text-white font-medium flex justify-between items-center"><span>App ID: ${doc.id.substring(0, 8)}...</span> <span class="text-xs text-yellow-400">+${TEST_REWARD} टोकन</span></div>`).join('')
+                        }
+                    </div>
+                </div>
+            `;
+            // Profile screen पर भी टोकन स्ट्रीम करें
+            // Since streamUserTokens updates token-balance and profile-token-balance, we ensure it runs
+            streamUserTokens(); 
+        }
+        
+        function renderError(container, message) {
+            container.innerHTML = `<div class="p-8 text-center text-red-500 bg-gray-700 rounded-xl mt-12 shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">त्रुटि!</h2>
+                <p class="text-lg">${message}</p>
+                <button onclick="renderView('home')" class="mt-4 bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-2 px-4 rounded-lg">होम पर वापस</button>
+            </div>`;
+        }
+
+
+        // --- 8. Initialization ---
+        window.onload = initializeFirebase;
+
+    </script>
+</body>
+</html>
