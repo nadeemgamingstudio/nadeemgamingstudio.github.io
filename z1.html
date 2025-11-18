@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>परीक्षक समुदाय (Testers Community)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+
+    <!-- Main App Container -->
+    <div id="app-container" class="flex-grow flex flex-col max-w-4xl mx-auto w-full p-4 sm:p-6">
+        <!-- Header -->
+        <header class="bg-gray-800 p-4 rounded-xl shadow-lg flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-teal-400">Tester Hub</h1>
+            <nav id="nav-area">
+                <!-- Navigation will be injected here -->
+            </nav>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <main id="content-area" class="flex-grow bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col justify-center items-center">
+            <!-- Content will be injected here (Home/Auth/Upload) -->
+            <div class="text-xl text-gray-400">लोड हो रहा है...</div>
+        </main>
+    </div>
+
+    <!-- Modals and Overlays -->
+    <div id="modal-container"></div>
+
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script>
+        // --- 1. Firebase और App Setup ---
+        let app;
+        let auth;
+        let db;
+        let userId = null;
+        let currentView = 'loading'; // State: loading, auth, home, upload, details
+
+        // ग्लोबल वेरिएबल्स जो Canvas द्वारा प्रदान किए जाते हैं
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfigString = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        // --- Gemini API Setup ---
+        const API_KEY = ""; // Canvas provides this
+        const GEMINI_MODEL = 'gemini-2.5-flash-preview-09-2025';
+
+        /**
+         * एक सरल Modal (संदेश बॉक्स) दिखाता है।
+         * @param {string} title - शीर्षक
+         * @param {string} message - संदेश
+         */
+        function showModal(title, message) {
+            const container = document.getElementById('modal-container');
+            container.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-2xl max-w-sm w-full border border-teal-500">
+                        <h3 class="text-xl font-bold text-teal-400 mb-4">${title}</h3>
+                        <p class="text-gray-300 mb-6">${message}</p>
+                        <button onclick="closeModal()" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-2 rounded-lg transition duration-150">बंद करें</button>
+                    </div>
+                </div>
+            `;
+            // 5 सेकंड बाद ऑटो-क्लोज
+            setTimeout(closeModal, 5000);
+        }
+
+        function closeModal() {
+            document.getElementById('modal-container').innerHTML = '';
+        }
+
+        /**
+         * Firebase सेवाओं को इनिशियलाइज़ करता है और Auth को संभालता है।
+         */
+        async function initializeFirebase() {
+            try {
+                const firebaseConfig = JSON.parse(firebaseConfigString);
+                if (Object.keys(firebaseConfig).length === 0) {
+                     throw new Error("Firebase configuration is missing.");
+                }
+
+                app = firebase.initializeApp(firebaseConfig);
+                auth = firebase.auth();
+                db = firebase.firestore();
+
+                // Firestore Logging (Debugging के लिए)
+                db.setLogLevel('debug');
+                
+                // Auth Listener: जब Auth की स्थिति बदलती है
+                auth.onAuthStateChanged(async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        await ensureUserDocument(user);
+                        renderView('home');
+                    } else if (initialAuthToken) {
+                        // Custom Token से साइन इन करें
+                        await auth.signInWithCustomToken(initialAuthToken);
+                    } else {
+                        // कोई टोकन नहीं है, इसलिए गुमनाम रूप से साइन इन करें
+                        const anonUserCredential = await auth.signInAnonymously();
+                        userId = anonUserCredential.user.uid;
+                        await ensureUserDocument(anonUserCredential.user);
+                        renderView('home');
+                    }
+                });
+
+            } catch (error) {
+                console.error("Firebase Initialization Error:", error);
+                renderError('Firebase Error: ' + error.message);
+            }
+        }
+        
+        /**
+         * यह सुनिश्चित करता है कि Firestore में उपयोगकर्ता के लिए एक एंट्री है।
+         * @param {object} user - Firebase User ऑब्जेक्ट
+         */
+        async function ensureUserDocument(user) {
+            const userRef = db.collection(`artifacts/${appId}/users/${user.uid}/user_data`).doc('profile');
+            try {
+                const doc = await userRef.get();
+                if (!doc.exists) {
+                    await userRef.set({
+                        email: user.email || 'anonymous@example.com',
+                        name: user.displayName || 'Guest Tester',
+                        tokens: 0,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                }
+            } catch (error) {
+                console.error("Error ensuring user document:", error);
+            }
+        }
+
+        /**
+         * LLM API को कॉल करने के लिए यूटिलिटी फंक्शन (एक्सपोनेंशियल बैकऑफ़ के साथ)
+         * @param {string} prompt - यूजर का प्रॉम्प्ट
+         * @param {string} systemInstruction - सिस्टम इंस्ट्रक्शन
+         * @returns {Promise<string>} - LLM का जनरेट किया गया टेक्स्ट
+         */
+        async function callGeminiApi(prompt, systemInstruction, maxRetries = 3) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${API_KEY}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+            };
+
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 429 && i < maxRetries - 1) {
+                            const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                            console.warn(`Rate limit exceeded. Retrying in ${delay / 1000}s...`);
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            continue;
+                        }
+                        const errorData = await response.json();
+                        throw new Error(`API call failed: ${response.status} - ${errorData.error?.message || response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (!text) {
+                        throw new Error("API response was successful but contained no text.");
+                    }
+                    return text;
+
+                } catch (error) {
+                    if (i === maxRetries - 1) {
+                        throw error;
+                    }
+                    // Continue loop for retry
+                }
+            }
+            throw new Error("Gemini API call failed after multiple retries.");
+        }
+
+        // --- Loader Function ---
+        function showLoader(elementId, show, message = 'जनरेट हो रहा है...') {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+
+            if (show) {
+                // Ensure the element is visible
+                el.classList.remove('hidden', 'text-red-400');
+                el.classList.add('text-teal-400');
+                
+                el.innerHTML = `<span class="flex items-center justify-center font-medium">
+                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    ${message}
+                                </span>`;
+            } else {
+                el.innerHTML = '';
+                el.classList.remove('text-teal-400');
+                el.classList.add('hidden');
+            }
+        }
+
+        // --- 2. Navigation और View Rendering ---
+
+        /**
+         * मुख्य UI को बदलता है।
+         * @param {string} viewName - home, auth, upload, details
+         */
+        function renderView(viewName) {
+            currentView = viewName;
+            const contentArea = document.getElementById('content-area');
+            const navArea = document.getElementById('nav-area');
+            contentArea.innerHTML = '';
+            navArea.innerHTML = '';
+
+            // Navigation Bar (सिर्फ लॉगिन के बाद)
+            if (viewName !== 'auth') {
+                navArea.innerHTML = `
+                    <button onclick="renderView('home')" class="text-teal-400 hover:text-teal-200 transition duration-150 p-2 rounded-md mx-1">होम</button>
+                    <button onclick="renderView('upload')" class="bg-teal-600 hover:bg-teal-700 text-gray-900 font-medium py-1 px-3 rounded-md transition duration-150 mx-1">ऐप अपलोड करें</button>
+                    <button onclick="handleLogout()" class="text-red-400 hover:text-red-200 transition duration-150 p-2 rounded-md mx-1">लॉगआउट</button>
+                `;
+            }
+
+            // View के अनुसार सामग्री लोड करें
+            switch (viewName) {
+                case 'home':
+                    renderHomeScreen(contentArea);
+                    break;
+                case 'upload':
+                    renderUploadScreen(contentArea);
+                    break;
+                case 'auth':
+                    renderAuthScreen(contentArea);
+                    break;
+                case 'loading':
+                    contentArea.innerHTML = '<div class="text-xl text-gray-400">सिस्टम शुरू हो रहा है...</div>';
+                    break;
+                default:
+                    contentArea.innerHTML = '<div class="text-xl text-red-400">पेज नहीं मिला</div>';
+            }
+        }
+
+        function renderError(message) {
+            const contentArea = document.getElementById('content-area');
+            contentArea.innerHTML = `
+                <div class="p-6 bg-red-900 border border-red-500 rounded-lg text-red-200">
+                    <h2 class="text-xl font-bold mb-3">क्षमा करें, एक त्रुटि हुई!</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // --- 3. Authentication (Auth) Screen ---
+        function renderAuthScreen(container) {
+            container.classList.add('p-8');
+            container.classList.remove('justify-center');
+
+            container.innerHTML = `
+                <div class="w-full max-w-md mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white mb-6 text-center">लॉगिन / साइनअप</h2>
+                    <form id="auth-form" class="space-y-4">
+                        <input type="email" id="auth-email" placeholder="ईमेल" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required>
+                        <input type="password" id="auth-password" placeholder="पासवर्ड" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required>
+                        <button type="submit" data-action="login" id="auth-submit" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-3 rounded-lg transition duration-150">लॉगिन करें</button>
+                    </form>
+                    <p class="text-center mt-4 text-gray-400">
+                        नया अकाउंट? 
+                        <a href="#" id="toggle-auth" class="text-teal-400 hover:text-teal-200 font-medium">साइनअप करें</a>
+                    </p>
+                    <div id="auth-message" class="mt-4 text-center text-red-400"></div>
+                </div>
+            `;
+
+            document.getElementById('auth-form').addEventListener('submit', handleAuthSubmit);
+            document.getElementById('toggle-auth').addEventListener('click', toggleAuthMode);
+        }
+
+        let isLoginMode = true;
+
+        function toggleAuthMode(e) {
+            e.preventDefault();
+            isLoginMode = !isLoginMode;
+            const submitButton = document.getElementById('auth-submit');
+            const toggleLink = document.getElementById('toggle-auth');
+            const formTitle = document.querySelector('#auth-form').previousElementSibling;
+
+            if (isLoginMode) {
+                submitButton.textContent = 'लॉगिन करें';
+                submitButton.setAttribute('data-action', 'login');
+                toggleLink.textContent = 'साइनअप करें';
+                formTitle.textContent = 'लॉगिन / साइनअप';
+            } else {
+                submitButton.textContent = 'नया अकाउंट बनाएँ';
+                submitButton.setAttribute('data-action', 'signup');
+                toggleLink.textContent = 'लॉगिन पर वापस जाएँ';
+                formTitle.textContent = 'साइनअप करें';
+            }
+        }
+
+        async function handleAuthSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            const action = document.getElementById('auth-submit').getAttribute('data-action');
+            const messageEl = document.getElementById('auth-message');
+            messageEl.textContent = '';
+            const submitButton = document.getElementById('auth-submit');
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'प्रक्रिया जारी है...';
+
+            try {
+                if (action === 'login') {
+                    await auth.signInWithEmailAndPassword(email, password);
+                } else {
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    // साइनअप के बाद, ensureUserDocument ऑटोमैटिकली onAuthStateChanged में कॉल हो जाएगा
+                }
+                // success: onAuthStateChanged will handle navigation to 'home'
+
+            } catch (error) {
+                console.error("Auth Error:", error);
+                messageEl.textContent = 'त्रुटि: ' + error.message;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = action === 'login' ? 'लॉगिन करें' : 'नया अकाउंट बनाएँ';
+            }
+        }
+
+        function handleLogout() {
+            auth.signOut().then(() => {
+                showModal('सफलता', 'आप सफलतापूर्वक लॉगआउट हो गए हैं।');
+                // renderAuthScreen will be called by onAuthStateChanged
+            }).catch((error) => {
+                showModal('त्रुटि', 'लॉगआउट में समस्या: ' + error.message);
+            });
+        }
+
+        // --- 4. Home Screen (App Listing) ---
+        function renderHomeScreen(container) {
+            container.classList.remove('justify-center');
+            container.innerHTML = `
+                <!-- Wallet Widget -->
+                <div id="wallet-info" class="p-4 bg-gray-700 rounded-lg mb-6 flex justify-between items-center shadow-md">
+                    <span class="text-xl font-medium text-gray-300">आपका बैलेंस:</span>
+                    <span id="token-balance" class="text-2xl font-bold text-teal-400">... टोकन</span>
+                </div>
+                
+                <h2 class="text-xl font-semibold mb-4 text-gray-200">टेस्टिंग के लिए उपलब्ध ऐप्स</h2>
+                <div id="app-list" class="space-y-3 w-full">
+                    <div class="text-center text-gray-400 p-4">ऐप्स लोड हो रहे हैं...</div>
+                </div>
+            `;
+            streamUserTokens();
+            streamAppListings();
+        }
+
+        /**
+         * Firestore से टोकन बैलेंस स्ट्रीम करें
+         */
+        function streamUserTokens() {
+            const tokenRef = db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile');
+            tokenRef.onSnapshot(doc => {
+                const balanceEl = document.getElementById('token-balance');
+                if (balanceEl) {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        const tokens = data.tokens || 0;
+                        balanceEl.textContent = `${tokens} टोकन`;
+                    } else {
+                         balanceEl.textContent = '0 टोकन';
+                    }
+                }
+            }, (error) => {
+                console.error("Token Stream Error:", error);
+                showModal('त्रुटि', 'टोकन लोड करने में समस्या।');
+            });
+        }
+
+        /**
+         * Firestore से ऐप्स को स्ट्रीम करें
+         */
+        function streamAppListings() {
+            const appsRef = db.collection(`artifacts/${appId}/public/data/app_listings`);
+            
+            // Real-time listener
+            appsRef.onSnapshot(snapshot => {
+                const appListEl = document.getElementById('app-list');
+                if (!appListEl) return;
+
+                if (snapshot.empty) {
+                    appListEl.innerHTML = '<div class="text-center text-gray-400 p-8">अभी टेस्टिंग के लिए कोई ऐप उपलब्ध नहीं है।</div>';
+                    return;
+                }
+
+                let appCardsHtml = '';
+                snapshot.docs.forEach(doc => {
+                    const data = doc.data();
+                    // एक साधारण कार्ड का HTML
+                    appCardsHtml += `
+                        <div class="app-card bg-gray-700 p-4 rounded-xl shadow-md cursor-pointer hover:bg-gray-600 transition duration-150"
+                             onclick="renderAppDetails('${doc.id}', '${data.appName}', '${data.description}', '${data.playStoreLink || ''}', '${data.tokens || 50}')">
+                            <div class="flex justify-between items-center">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-lg font-semibold text-white truncate">${data.appName || 'अज्ञात ऐप'}</h3>
+                                    <p class="text-sm text-teal-300">${data.developerName || 'Developer'}</p>
+                                </div>
+                                <div class="text-right ml-4">
+                                    <span class="text-xl font-bold text-teal-400">${data.tokens || 50}</span>
+                                    <span class="text-sm text-gray-400 block">टोकन रिवॉर्ड</span>
+                                </div>
+                                <svg class="w-5 h-5 ml-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                        </div>
+                    `;
+                });
+                appListEl.innerHTML = appCardsHtml;
+
+            }, (error) => {
+                console.error("App List Stream Error:", error);
+                const appListEl = document.getElementById('app-list');
+                if (appListEl) {
+                    appListEl.innerHTML = '<div class="text-center text-red-400 p-8">ऐप लिस्ट लोड करने में त्रुटि।</div>';
+                }
+            });
+        }
+
+        // --- 5. Upload App Screen (Gemini Feature 1: Description Generator) ---
+        
+        async function handleGenerateDescription() {
+            const appName = document.getElementById('app-name').value.trim();
+            const descriptionEl = document.getElementById('app-description');
+            const messageEl = document.getElementById('upload-message');
+            
+            // Clear previous message content but keep loader space
+            messageEl.classList.remove('hidden');
+            messageEl.textContent = ''; 
+
+            if (appName.length < 3) {
+                messageEl.classList.remove('hidden');
+                messageEl.classList.remove('text-teal-400');
+                messageEl.classList.add('text-red-400');
+                messageEl.textContent = 'कृपया पहले ऐप का नाम दर्ज करें।';
+                return;
+            }
+
+            showLoader('upload-message', true, 'AI विवरण जनरेट कर रहा है...');
+            messageEl.classList.remove('text-red-400'); // Ensure it's not red during load
+
+            try {
+                const systemPrompt = "You are a professional marketing copywriter for a beta testing community. Your task is to generate compelling, detailed, and clear app descriptions for developers. The description must be in simple, engaging Hindi. The final output must be only the description text, no extra commentary or markdown formatting like lists or headers.";
+                const userPrompt = `Generate a compelling and detailed 150-word description in simple Hindi for an app named "${appName}" that is seeking beta testers. Focus on what testers need to check (e.g., login, payment, specific features, bug types).`;
+
+                const generatedText = await callGeminiApi(userPrompt, systemPrompt);
+                
+                // Remove Markdown and set the value
+                descriptionEl.value = generatedText.replace(/[\*\`\#]/g, '').trim();
+
+            } catch (error) {
+                console.error("Gemini Description Error:", error);
+                showLoader('upload-message', false); // Hide loader
+                messageEl.classList.remove('hidden');
+                messageEl.classList.remove('text-teal-400');
+                messageEl.classList.add('text-red-400');
+                messageEl.textContent = 'AI विवरण जनरेट करने में त्रुटि: ' + error.message;
+            } finally {
+                // Loader hides inside the try/catch blocks now
+            }
+        }
+
+        function renderUploadScreen(container) {
+            container.classList.remove('justify-center');
+            container.innerHTML = `
+                <div class="w-full max-w-lg mx-auto">
+                    <h2 class="text-2xl font-bold text-white mb-6 text-center">नया ऐप अपलोड करें</h2>
+                    <p class="text-sm text-gray-400 mb-6 text-center">ऐप लिस्ट करने के लिए आपको 50 टोकन का खर्च आएगा।</p>
+                    <form id="upload-form" class="space-y-4">
+                        <input type="text" id="app-name" placeholder="ऐप का नाम" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required>
+                        <input type="text" id="dev-name" placeholder="आपका (डेवलपर) नाम" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required>
+                        <input type="url" id="play-store-link" placeholder="Play Store या APK लिंक" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required>
+                        
+                        <div class="relative">
+                            <textarea id="app-description" placeholder="ऐप का संक्षिप्त विवरण (क्यों टेस्ट करा रहे हैं?)" rows="4" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500" required></textarea>
+                            <button type="button" onclick="handleGenerateDescription()" class="absolute bottom-2 right-2 bg-teal-500 hover:bg-teal-600 text-gray-900 text-xs font-bold py-1 px-3 rounded-full transition duration-150 flex items-center">
+                                <span class="mr-1">✨</span> विवरण जनरेट करें
+                            </button>
+                        </div>
+
+                        <button type="submit" id="upload-submit" class="w-full bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-3 rounded-lg transition duration-150">लिस्टिंग सबमिट करें</button>
+                    </form>
+                    <div id="upload-message" class="mt-4 text-center text-red-400 hidden"></div>
+                </div>
+            `;
+
+            document.getElementById('upload-form').addEventListener('submit', handleUploadSubmit);
+        }
+
+        async function handleUploadSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('app-name').value;
+            const devName = document.getElementById('dev-name').value;
+            const link = document.getElementById('play-store-link').value;
+            const description = document.getElementById('app-description').value;
+            const messageEl = document.getElementById('upload-message');
+            const submitButton = document.getElementById('upload-submit');
+            
+            messageEl.textContent = '';
+            messageEl.classList.add('hidden'); // Hide message/loader
+            
+            if (!userId) {
+                messageEl.classList.remove('hidden');
+                messageEl.classList.add('text-red-400');
+                messageEl.textContent = 'त्रुटि: उपयोगकर्ता आईडी उपलब्ध नहीं है।';
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'अपलोड हो रहा है...';
+
+            try {
+                // टोकन बैलेंस चेक (सिर्फ़ उदाहरण के लिए, Firestore rules से भी चेक करना चाहिए)
+                const userDoc = await db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile').get();
+                const currentTokens = userDoc.data()?.tokens || 0;
+                const cost = 50; // अस्थायी लागत
+
+                if (currentTokens < cost) {
+                    showModal('टोकन कम', `आपके पास पर्याप्त टोकन नहीं हैं। लिस्ट करने के लिए कम से कम ${cost} टोकन चाहिए।`);
+                    return;
+                }
+
+                // 1. ऐप लिस्टिंग डेटा तैयार करें
+                const newApp = {
+                    appName: name,
+                    developerName: devName,
+                    playStoreLink: link,
+                    description: description,
+                    postedByUid: userId,
+                    postedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    tokens: 50, // टेस्टर को मिलने वाला रिवॉर्ड
+                    testerCount: 0,
+                    iconUrl: 'https://placehold.co/50x50/34D399/1F2937?text=App' // Placeholder Icon
+                };
+
+                // 2. Firestore Batch Operation
+                const batch = db.batch();
+                
+                // A. App Listing जोड़ें
+                const appRef = db.collection(`artifacts/${appId}/public/data/app_listings`).doc();
+                batch.set(appRef, newApp);
+
+                // B. डेवलपर के टोकन काटें
+                const userRef = db.collection(`artifacts/${appId}/users/${userId}/user_data`).doc('profile');
+                batch.update(userRef, {
+                    tokens: firebase.firestore.FieldValue.increment(-cost)
+                });
+
+                await batch.commit();
+
+                showModal('सफलता!', 'आपका ऐप सफलतापूर्वक लिस्ट कर दिया गया है। होम स्क्रीन पर वापस जाएँ।');
+                renderView('home');
+
+            } catch (error) {
+                console.error("Upload Error:", error);
+                messageEl.classList.remove('hidden');
+                messageEl.classList.add('text-red-400');
+                messageEl.textContent = 'अपलोड में त्रुटि: ' + error.message;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'लिस्टिंग सबमिट करें';
+            }
+        }
+        
+        // --- 6. App Details Screen (Gemini Feature 2: Scenario Generator) ---
+        
+        async function handleGenerateScenarios(description) {
+            const scenarioEl = document.getElementById('test-scenarios-output');
+            const buttonEl = document.getElementById('scenario-button');
+
+            if (!description || description.trim() === '') {
+                scenarioEl.innerHTML = '<p class="text-red-400">विवरण खाली है। टेस्टिंग सिनेरियो जनरेट नहीं किया जा सकता।</p>';
+                return;
+            }
+            
+            // Show loading
+            buttonEl.disabled = true;
+            buttonEl.innerHTML = `<svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> AI जनरेट कर रहा है...`;
+            scenarioEl.innerHTML = '';
+            
+            try {
+                const systemPrompt = "You are an expert QA Tester. Your role is to analyze an app description and generate 5 clear, high-level testing scenarios for a beta tester. The output must be a numbered list of the 5 scenarios in simple Hindi, and nothing else. Do not include any introductory or concluding text, just the list.";
+                const userPrompt = `Based on the following app description, generate 5 high-level testing scenarios or areas of focus for a beta tester. Use simple Hindi sentences.\n\nDescription:\n${description}`;
+
+                const generatedText = await callGeminiApi(userPrompt, systemPrompt);
+                
+                // Convert list (numbered or bulleted) to HTML list
+                let htmlList = generatedText;
+                
+                // Attempt to format output as an ordered list
+                if (!generatedText.includes('<') && generatedText.match(/\d+\.\s/)) {
+                    const items = generatedText.split(/\d+\.\s*/).filter(item => item.trim() !== '');
+                    if (items.length > 0) {
+                        htmlList = `<ol class="list-decimal list-inside space-y-2 pl-4 mt-3 text-gray-300">`;
+                        items.forEach(item => {
+                            htmlList += `<li>${item.trim()}</li>`;
+                        });
+                        htmlList += `</ol>`;
+                    }
+                } else {
+                     // Fallback for simple text/unstructured list
+                     htmlList = `<p class="mt-3 whitespace-pre-wrap text-gray-300">${generatedText}</p>`;
+                }
+
+                scenarioEl.innerHTML = `
+                    <div class="mt-6 p-4 bg-gray-900 border border-teal-600 rounded-lg">
+                        <h4 class="text-lg font-semibold text-teal-300 mb-2">AI-जनरेटेड टेस्टिंग सिनेरियो:</h4>
+                        ${htmlList}
+                    </div>
+                `;
+
+            } catch (error) {
+                console.error("Gemini Scenario Error:", error);
+                scenarioEl.innerHTML = `<p class="text-red-400 mt-4">AI सिनेरियो जनरेशन विफल रहा।</p>`;
+            } finally {
+                buttonEl.disabled = false;
+                buttonEl.innerHTML = '✨ टेस्टिंग सिनेरियो पाएँ';
+            }
+        }
+
+        // नोट: हम सरलता के लिए URL parameters के बजाय इनलाइन रेंडरिंग का उपयोग कर रहे हैं।
+        function renderAppDetails(id, name, description, link, tokens) {
+            const container = document.getElementById('content-area');
+            container.classList.remove('justify-center');
+            
+            // Escape the description string to safely pass it as a parameter in the onclick attribute
+            // This handles single quotes, double quotes, and newlines for JS function call
+            const safeDescription = description.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
+
+            container.innerHTML = `
+                <div class="w-full max-w-lg mx-auto space-y-4">
+                    <button onclick="renderView('home')" class="text-teal-400 hover:text-teal-200 flex items-center mb-4">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        वापस होम पर
+                    </button>
+                    <h2 class="text-3xl font-bold text-teal-400 mb-2">${name}</h2>
+                    <div class="p-4 bg-gray-700 rounded-lg">
+                        <p class="text-sm font-medium text-gray-400">रिवॉर्ड</p>
+                        <p class="text-2xl font-extrabold text-teal-400">${tokens} टोकन</p>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-200 mt-6">विवरण</h3>
+                    <p class="text-gray-300 whitespace-pre-wrap">${description}</p>
+                    
+                    <button id="scenario-button" onclick="handleGenerateScenarios('${safeDescription}')" class="w-full flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-teal-300 font-bold py-3 rounded-lg transition duration-150 mt-4">
+                        ✨ टेस्टिंग सिनेरियो पाएँ
+                    </button>
+                    
+                    <div id="test-scenarios-output" class="text-gray-300"></div>
+
+                    <a href="${link}" target="_blank" class="w-full flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-gray-900 font-bold py-3 rounded-lg transition duration-150 mt-8">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Play Store पर जाएँ और टेस्टिंग शुरू करें
+                    </a>
+                    
+                    <p class="text-center text-sm text-gray-500 pt-4">ऐप आईडी: ${id}</p>
+                </div>
+            `;
+        }
+
+        // --- 7. Initialization ---
+        window.onload = initializeFirebase;
+
+    </script>
+</body>
+</html>
