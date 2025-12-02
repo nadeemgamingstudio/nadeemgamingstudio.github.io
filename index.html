@@ -1,197 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="2aLXWXxR4swyZqs_5IfoNyqTdIX5C7wwk_ed8AV03ss" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nadeem Gaming Studio</title>
-  <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar {
-      background-color: #111;
-      padding: 10px 30px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 2px solid #222;
-    }
-
-    .navbar a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .navbar a.active {
-      background-color: #f06;
-      padding: 8px 16px;
-      border-radius: 8px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 30px;
-      text-align: left;
-    }
-
-    .game-gallery {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .game-box {
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .game-box img {
-      width: 150px;
-      height: 150px;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 2px solid #555;
-    }
-
-    .game-box p {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      color: #fbd534;
-      margin-top: 30px;
-    }
-
-    p {
-      line-height: 1.6;
-      margin: 10px 0;
-      color: #ddd;
-    }
-
-    .profile-center {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    .profile-center img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .profile-center h2 {
-      margin: 10px 0 5px 0;
-    }
-
-    .profile-center p {
-      margin: 4px 0;
-    }
-
-    .highlight {
-      color: #f20544;
-      font-weight: bold;
-    }
-
-    h3 {
-      margin: 25px 0 10px;
-      color: #fbd534;
-    }
-
-    p {
-      margin: 10px 0 20px;
-    }
-
-    ul {
-      margin: 10px 0 20px 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    a {
-
-    }
-    .footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      color: #666;
-      background-color: #111;
-    }
-  </style>
+    <!-- Google Site Verification - User provided -->
+    <meta name="google-site-verification" content="2aLXWXxR4swyZqs_5IfoNyqTdIX5C7wwk_ed8AV03ss" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nadeem Gaming Studio - Home</title>
+    <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration for Gaming Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A', /* Deep Black */
+                        'secondary-bg': '#1a1a1a', /* Dark Grey */
+                        'accent-pink': '#FF0066', /* Bright Pink Accent */
+                        'accent-yellow': '#FBD534', /* Yellow Gold Accent */
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 15px rgba(255, 0, 102, 0.6)',
+                        'neon-yellow': '0 0 15px rgba(251, 213, 52, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ensuring Inter font is used */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; 
+        }
+        /* Custom scrollbar for subtle professional look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555555; }
+    </style>
 </head>
-<body>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
 
-  <div class="navbar">
-    <img src="nadeemgamingstudio.ico" alt="Logo" width="30" />
-    <a href="https://nadeemgamingstudio.github.io">HOME</a>
-    <a href="https://nadeemgamingstudio.github.io/games">GAMES</a>
-    <a href="https://nadeemgamingstudio.github.io/privacy">PRIVACY</a>
-  </div>
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-secondary-bg shadow-lg shadow-black/50 border-b border-border-dark">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <div class="flex items-center space-x-3">
+                <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" class="h-8 w-8 rounded-lg" onerror="this.src='https://placehold.co/32x32/1a1a1a/f06?text=NGS'">
+                <span class="text-xl font-extrabold tracking-wider text-white">Nadeem Gaming Studio</span>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="space-x-4 flex items-center">
+                <a href="https://nadeemgamingstudio.github.io" 
+                   class="text-text-light hover:text-accent-pink transition duration-300 font-medium px-3 py-1.5 rounded-lg border-b-2 border-accent-pink">
+                    HOME
+                </a>
+                <a href="https://nadeemgamingstudio.github.io/games" 
+                   class="text-text-light hover:text-accent-pink transition duration-300 font-medium px-3 py-1.5 rounded-lg">
+                    GAMES
+                </a>
+                <a href="https://nadeemgamingstudio.github.io/privacy" 
+                   class="text-text-light hover:text-accent-pink transition duration-300 font-medium px-3 py-1.5 rounded-lg">
+                    PRIVACY
+                </a>
+                <a href="https://nadeemgamingstudio.github.io/contact" 
+                   class="text-text-light hover:text-accent-yellow transition duration-300 font-medium px-3 py-1.5 rounded-lg">
+                    CONTACT
+                </a>
+            </div>
+        </nav>
+    </header>
 
-  <!-- 🎮 Game Gallery on Top -->
-  <div class="game-gallery"> 
-    <!-- Game 1 -->
-    <a href="https://nadeemgamingstudio.github.io/catvsmouserain" class="game-box">
-      <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain" />
-      <p>Cat vs Mouse Rain</p>
-    </a>
-        <!-- Game 1 -->
-    <a href="https://nadeemgamingstudio.github.io/guessspellopic" class="game-box">
-      <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Cat vs Mouse Rain" />
-      <p>Guess SpelloPic</p>
-    </a>
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
+        
+        <!-- Game Showcase Section - Now 7 Cards -->
+        <section class="mb-16">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-center mb-10 text-white uppercase tracking-wider">
+                <span class="text-accent-yellow">🚀 Our Featured</span> Games 🎮
+            </h1>
+            
+            <!-- Grid Layout for 7 Cards (3 per row, 1 overflow) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+                
+                <!-- Game 1: Cat vs Mouse Rain (Provided) -->
+                <a href="https://nadeemgamingstudio.github.io/catvsmouserain" 
+                   class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-pink transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square">
+                        <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain Cover" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:rotate-1 group-hover:scale-110"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x400/111/ff0066?text=CAT+VS+MOUSE'">
+                    </div>
+                    <p class="text-lg font-bold text-center text-accent-yellow group-hover:text-white transition duration-300 truncate">
+                        Cat vs Mouse Rain
+                    </p>
+                    <p class="text-xs text-center text-gray-400 mt-1">
+                        Addictive Arcade Challenge!
+                    </p>
+                </a>
+                
+                <!-- Game 2: Guess SpelloPic (Provided) -->
+                <a href="https://nadeemgamingstudio.github.io/guessspellopic" 
+                   class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-yellow transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square">
+                        <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Guess SpelloPic Cover" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:rotate-1 group-hover:scale-110"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x400/111/fbd534?text=SPELLOPIC'">
+                    </div>
+                    <p class="text-lg font-bold text-center text-accent-yellow group-hover:text-white transition duration-300 truncate">
+                        Guess SpelloPic
+                    </p>
+                    <p class="text-xs text-center text-gray-400 mt-1">
+                        Fun Word & Picture Puzzle
+                    </p>
+                </a>
 
+                <!-- Placeholder 3 -->
+                <a href="#" class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-pink transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square bg-gray-800/70 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-accent-pink opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-center text-gray-500 group-hover:text-white transition duration-300 truncate">
+                        Project Zenith
+                    </p>
+                    <p class="text-xs text-center text-gray-600 mt-1">
+                        Coming Soon...
+                    </p>
+                </a>
 
-  </div>
+                <!-- Placeholder 4 -->
+                <a href="#" class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-yellow transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square bg-gray-800/70 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-accent-yellow opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-center text-gray-500 group-hover:text-white transition duration-300 truncate">
+                        Space Runner
+                    </p>
+                    <p class="text-xs text-center text-gray-600 mt-1">
+                        Launch in Q3 2025
+                    </p>
+                </a>
 
-  <!-- About Section -->
-  <div class="container">
-    <div class="section-title">🎮 About Nadeem Gaming Studio</div>
-    <p><strong>Welcome to Nadeem Gaming Studio – Where Creativity Meets Play!</strong></p>
+                <!-- Placeholder 5 -->
+                <a href="#" class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-pink transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square bg-gray-800/70 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-accent-pink opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-center text-gray-500 group-hover:text-white transition duration-300 truncate">
+                        Dungeon Crawler
+                    </p>
+                    <p class="text-xs text-center text-gray-600 mt-1">
+                        Early Access
+                    </p>
+                </a>
 
-    <p>At Nadeem Gaming Studio, we believe in turning imagination into interactive experiences. Founded by a passionate indie game developer, this studio is dedicated to creating fun, engaging, and family-friendly games that players of all ages can enjoy. Whether it’s a quick arcade challenge or a story-driven adventure, our mission is to deliver unique gameplay with colorful visuals and simple controls.</p>
+                <!-- Placeholder 6 -->
+                <a href="#" class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-yellow transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square bg-gray-800/70 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-accent-yellow opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-center text-gray-500 group-hover:text-white transition duration-300 truncate">
+                        Pixel Kingdom
+                    </p>
+                    <p class="text-xs text-center text-gray-600 mt-1">
+                        New Project
+                    </p>
+                </a>
 
-    <p>Our journey began with a love for gaming and a desire to create something original. We started small — just one person with big dreams and a lot of ideas. Today, Nadeem Gaming Studio is growing fast, with a focus on mobile gaming that’s easy to pick up and hard to put down. Our first game, Cat vs Mouse Rain, is a perfect example of this — simple, fun, and addictive. In the game, a cute cartoon cat dodges falling mice while trying to stay on the road and score high. It’s light-hearted, visually charming, and built with care.</p>
+                <!-- Placeholder 7 -->
+                <a href="#" class="group bg-secondary-bg p-4 rounded-xl shadow-lg hover:shadow-neon-pink transition duration-300 transform hover:scale-[1.05] border border-border-dark">
+                    <div class="relative overflow-hidden rounded-lg mb-3 aspect-square bg-gray-800/70 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-accent-pink opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg font-bold text-center text-gray-500 group-hover:text-white transition duration-300 truncate">
+                        Endless Racer
+                    </p>
+                    <p class="text-xs text-center text-gray-600 mt-1">
+                        Mobile Exclusive
+                    </p>
+                </a>
+            </div>
+        </section>
 
-    <p>We are committed to continuous learning and improving with every project. Our goal is not only to entertain but to inspire and build a global community of gamers who enjoy light, joyful experiences.</p>
+        <!-- About Section -->
+        <section class="bg-secondary-bg p-8 rounded-xl shadow-2xl border border-border-dark mt-16">
+            <h2 class="text-3xl font-bold mb-4 border-b-2 border-accent-pink pb-3 text-accent-pink uppercase">
+                🕹️ About Nadeem Gaming Studio
+            </h2>
+            <p class="text-text-light mt-5 text-lg">
+                <strong>Welcome to Nadeem Gaming Studio – Where Creativity Meets Play!</strong>
+            </p>
 
-    <p>From design and development to publishing, everything is done in-house with attention to detail. We plan to expand into more games and platforms, and bring exciting new stories and characters to life.</p>
+            <p class="mt-4 text-gray-300">
+                At Nadeem Gaming Studio, we believe in transforming imagination into captivating interactive experiences. Founded by a passionate indie game developer, our studio is dedicated to creating fun, engaging, and family-friendly games that players of all ages can enjoy. Whether it’s a quick arcade challenge or a story-driven adventure, our mission is to deliver unique gameplay with colorful visuals and simple controls.
+            </p>
 
-    <p>Thank you for visiting Nadeem Gaming Studio. We’re just getting started — and the best is yet to come.</p>
+            <p class="mt-4 text-gray-300">
+                Our journey began with a deep love for gaming and a desire to create original content. We started small—just one person with big dreams and a lot of ideas. Today, Nadeem Gaming Studio is growing fast, with a primary focus on mobile gaming that is easy to pick up and hard to put down. Our flagship title, <span class="text-accent-yellow font-semibold">Cat vs Mouse Rain</span>, perfectly embodies this philosophy—it's simple, fun, and highly addictive.
+            </p>
+            
+            <p class="mt-4 text-gray-300">
+                We are committed to continuous learning and improvement with every project. Our goal is not only to entertain but to inspire and build a global community of gamers who cherish light, joyful experiences. From design and development to publishing, every step is executed in-house with meticulous attention to detail. We plan to expand into more genres and platforms, bringing exciting new stories and characters to life.
+            </p>
 
-    <p>🚀 Let’s Play, Let’s Imagine, Let’s Create Together!</p>
-  </div>
+            <p class="mt-6 text-xl font-bold text-center text-accent-pink">
+                🚀 Let’s Play, Let’s Imagine, Let’s Create Together!
+            </p>
+        </section>
 
-  <!-- Profile Section -->
-  <div class="profile-center">
-    <img src="https://nadeemgamingstudio.github.io/Nadeem.png" alt="Nadeem Photo">
-    <h2>Nadeem</h2>
-    <p>Game developer</p>
-    <p class="highlight">Creative indie developer crafting fun, unique games with heart.</p>
-  </div>
-  
-    <div class="footer">
-    &copy; 2025 Nadeem Gaming Studio
-  </div>
+        <!-- Profile / Developer Card -->
+        <section class="flex justify-center mt-16">
+            <div class="bg-secondary-bg p-8 rounded-xl shadow-2xl shadow-accent-pink/20 w-full max-w-xs text-center border-2 border-accent-pink/50 transition duration-500 hover:shadow-neon-pink">
+                <img src="https://nadeemgamingstudio.github.io/Nadeem.png" alt="Nadeem Photo" 
+                     class="w-32 h-32 rounded-full object-cover mx-auto ring-4 ring-accent-yellow p-1 mb-4"
+                     onerror="this.onerror=null; this.src='https://placehold.co/128x128/1a1a1a/fbd534?text=Nadeem'">
+                
+                <h3 class="text-2xl font-extrabold text-white mb-1">Nadeem</h3>
+                <p class="text-sm text-accent-pink font-medium uppercase tracking-widest mb-3">Game Developer</p>
+                <p class="text-gray-400 italic border-t border-border-dark pt-3">
+                    "Creative indie developer crafting fun, unique games with heart."
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-4 border-accent-pink/50 py-4 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2025 Nadeem Gaming Studio. All Rights Reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
