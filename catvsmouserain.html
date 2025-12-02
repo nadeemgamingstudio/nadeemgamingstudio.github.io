@@ -1,119 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to “Cat vs Mouse Rain” – The Ultimate Reflex Challenge!</title>
-  <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
-  <style>
-    body {
-      background-color: #000;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 0px;
-    }
-    .header {
-      text-align: center;
-    }
-    .header img {
-      max-width: 200px;
-      border-radius: 20px;
-      margin: 1px;
-    }
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      text-align: left;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-    a {
-      display: inline-block;
-      margin-top: 0px;
-      color: #00ccff;
-      text-decoration: none;
-    }
-    .back-home {
-      text-align: center;
-    }
-    .section-title {
-      font-size: 1rem;
-      color: #fbd534;
-      margin-top: 10px;
-    }
-        .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cat vs Mouse Rain – The Ultimate Reflex Challenge!</title>
+    <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration (Matching Home Page Theme) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A', 
+                        'secondary-bg': '#1a1a1a', 
+                        'accent-pink': '#FF0066', 
+                        'accent-yellow': '#FBD534', 
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 20px rgba(255, 0, 102, 0.8)',
+                        'neon-yellow': '0 0 20px rgba(251, 213, 52, 0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; 
+        }
+    </style>
 </head>
-<body>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
 
-  <div class="header">
-    <h3>"Tap. Dodge. Survive. How Long Can You Last?"</h3>
-    <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Game Image" />
-    <br />
-    <div class="section-title">💾 Download Now and Help the Cat Survive the Mouse Rain!</div>
-    <a href="https://play.google.com/store/apps/details?id=com.CatvsMouseRain" target="_blank">
-      <img src="https://nadeemgamingstudio.github.io/GooglePlayLogo.png" alt="Get it on Google Play" />
+    <!-- Back to Home Button (Fixed Top Left) -->
+    <a href="https://nadeemgamingstudio.github.io" 
+       class="fixed top-4 left-4 z-50 bg-secondary-bg text-accent-yellow px-4 py-2 rounded-full shadow-lg border border-border-dark hover:bg-gray-800 transition duration-300 flex items-center space-x-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>Back to Studio</span>
     </a>
-  </div>
 
-  <div class="content">
-    <p>🐾 <strong>Welcome to “Cat vs Mouse Rain” – The Ultimate Reflex Challenge!</strong></p>
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        <!-- Game Hero Section -->
+        <header class="text-center mb-12 p-6 bg-secondary-bg rounded-2xl shadow-2xl shadow-black/50 border-t-4 border-accent-pink">
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 uppercase tracking-tighter">
+                CAT VS MOUSE <span class="text-accent-pink">RAIN</span>
+            </h1>
+            <h2 class="text-lg sm:text-2xl font-semibold text-accent-yellow italic">
+                "Tap. Dodge. Survive. How Long Can You Last?"
+            </h2>
 
-    <p>Get ready for a fast-paced, heart-pounding, and wildly entertaining arcade game where your only mission is survival! In Cat vs Mouse Rain, you play as a cute, cartoon-style cat on a road with mountains and clouds in the background. Your job? Dodge a relentless shower of falling mice while staying firmly on the path. The more mice you escape, the higher your score – but don’t blink, because the pace keeps getting faster!</p>
+            <!-- Game Image / Banner -->
+            <div class="mt-8 mb-6 flex justify-center">
+                <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain Game Banner" 
+                     class="max-w-xs sm:max-w-sm w-full rounded-3xl object-cover border-4 border-accent-yellow shadow-neon-yellow transition duration-500 hover:scale-[1.03]"
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/111/fbd534?text=CAT+VS+MOUSE+RAIN'">
+            </div>
 
-    <p>🎮 <strong>Simple Gameplay, Endless Fun</strong></p>
+            <!-- Download Button -->
+            <div class="mt-6">
+                <p class="text-xl font-bold text-text-light mb-4">💾 Download Now and Start Dodging!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.CatvsMouseRain" target="_blank" 
+                   class="inline-block bg-accent-pink text-white font-extrabold py-3 px-10 rounded-xl uppercase tracking-widest text-lg shadow-lg shadow-accent-pink/50 transition duration-300 transform hover:scale-105 hover:shadow-neon-pink">
+                    GET IT ON GOOGLE PLAY
+                </a>
+            </div>
+            
+        </header>
 
-    <p>Move the cat left or right with simple controls and avoid the falling mice. Each second you survive and every mouse you dodge adds to your high score. It’s easy to play, but hard to master – perfect for casual gamers and challenge lovers alike.</p>
+        <!-- Game Description and Features -->
+        <section class="mt-12 bg-secondary-bg p-8 rounded-2xl shadow-xl border border-border-dark">
+            
+            <h3 class="text-3xl font-bold text-accent-yellow mb-6 border-b-2 border-gray-700 pb-3">
+                🐾 The Ultimate Reflex Challenge
+            </h3>
+            
+            <p class="text-gray-300 mb-6">
+                Get ready for a fast-paced, heart-pounding, and wildly entertaining arcade game where your only mission is survival! In **Cat vs Mouse Rain**, you play as a cute, cartoon-style cat dodging a relentless shower of falling mice while staying firmly on the road. The more mice you escape, the higher your score – but don’t blink, because the pace keeps getting faster!
+            </p>
 
-    <p>🐱 <strong>Features:</strong></p>
-    <ul>
-      <li>🐭 Endless falling mice to dodge</li>
-      <li>🐱 A lovable cat character you can control</li>
-      <li>🌄 Beautiful cartoon background with road, land, trees, mountains, and clouds</li>
-      <li>🎵 Light and fun background music</li>
-      <li>📱 Optimized for all Android phones – perfect for playing on the go</li>
-      <li>🏆 Increasing difficulty to keep things exciting</li>
-      <li>🔥 Smooth animations and charming 2D graphics</li>
-    </ul>
+            <!-- Gameplay Section -->
+            <div class="grid md:grid-cols-2 gap-8 mt-10">
+                
+                <div>
+                    <h4 class="text-2xl font-bold text-accent-pink mb-4 flex items-center space-x-2">
+                        <span class="text-3xl">🎮</span> <span>Simple Controls, Endless Fun</span>
+                    </h4>
+                    <ul class="space-y-3 text-gray-400 list-none pl-0">
+                        <li class="flex items-start">
+                            <span class="text-accent-yellow mr-3 text-xl font-bold">●</span>
+                            <p><strong>Intuitive Tap Controls:</strong> Move the cat left or right with simple screen touches.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent-yellow mr-3 text-xl font-bold">●</span>
+                            <p><strong>Addictive Loop:</strong> Each second you survive and every mouse you dodge adds to your high score.</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent-yellow mr-3 text-xl font-bold">●</span>
+                            <p><strong>Rising Difficulty:</strong> The pace increases constantly, challenging both casual and hardcore gamers.</p>
+                        </li>
+                    </ul>
+                </div>
 
-    <p>🎯 <strong>How to Play:</strong></p>
-    <ul>
-      <li>Touch left or right side of the screen to move the cat</li>
-      <li>Avoid all falling mice – if one hits you, it’s game over</li>
-      <li>Watch your score increase the longer you survive</li>
-      <li>Try again and beat your high score!</li>
-    </ul>
+                <div>
+                    <h4 class="text-2xl font-bold text-accent-pink mb-4 flex items-center space-x-2">
+                        <span class="text-3xl">✨</span> <span>Key Features</span>
+                    </h4>
+                    <ul class="space-y-3 text-gray-300 list-disc list-inside">
+                        <li>Endless falling mice to dodge</li>
+                        <li>A lovable, responsive cat character</li>
+                        <li>Beautiful cartoon background (road, trees, mountains, and clouds)</li>
+                        <li>Light and fun background music</li>
+                        <li>Optimized for all Android phones – perfect for playing on the go</li>
+                        <li>Smooth animations and charming 2D graphics</li>
+                        <li>Family-friendly and suitable for all ages</li>
+                    </ul>
+                </div>
+            </div>
 
-    <p>🌟 <strong>Why You’ll Love It:</strong></p>
-    <p>Whether you have 2 minutes or 20, Cat vs Mouse Rain is perfect for quick play sessions. The cute art style, responsive controls, and rising difficulty make it incredibly addictive. It’s a game that kids, teens, and adults can all enjoy.</p>
+            <!-- How to Play -->
+            <div class="mt-10 pt-6 border-t border-gray-700">
+                <h4 class="text-2xl font-bold text-accent-yellow mb-4 flex items-center space-x-2">
+                    <span class="text-3xl">🎯</span> <span>How to Play</span>
+                </h4>
+                <ol class="space-y-3 text-gray-300 list-decimal list-inside pl-4">
+                    <li>Touch the **left or right side** of the screen to move the cat horizontally.</li>
+                    <li>**Avoid all falling mice** – if one hits you, it's game over!</li>
+                    <li>Watch your score increase the longer you survive the rain.</li>
+                    <li>Try again and beat your high score – <span class="text-accent-pink font-semibold">challenge your reflexes!</span></li>
+                </ol>
+            </div>
 
-    <p>📈 <strong>Challenge Yourself and Your Friends:</strong><br>
-    Compete to see who can dodge the most mice and get the highest score! Can you become the ultimate cat-dodger?</p>
+            <!-- Call to Action Footer -->
+            <div class="mt-10 text-center pt-8 border-t border-gray-700">
+                <p class="text-xl font-semibold text-white mb-4">
+                    👉 Install now and test your reflexes in this exciting new arcade challenge!
+                </p>
+                <p class="text-gray-400 italic mb-6">
+                    Cat vs Mouse Rain is free to play and requires no internet connection.
+                </p>
 
-    <p>💡 <strong>Great for All Ages:</strong><br>
-    With no violence, no complex mechanics, and a sweet art style, this game is family-friendly and suitable for all age groups.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.CatvsMouseRain" target="_blank" 
+                   class="inline-block bg-accent-yellow text-primary-bg font-extrabold py-3 px-12 rounded-xl uppercase tracking-widest text-lg shadow-lg shadow-accent-yellow/50 transition duration-300 transform hover:scale-105 hover:shadow-neon-yellow">
+                    PLAY NOW
+                </a>
+            </div>
 
-    <p>💾 <strong>Download Now and Help the Cat Survive the Mouse Rain!</strong></p>
+        </section>
 
-    <p>Cat vs Mouse Rain is free to play and requires no internet connection. Whether you're in a coffee shop, a classroom, or commuting, you can always dive into the fun.</p>
+    </main>
 
-    <p>👉 <strong>Install now and test your reflexes in this exciting new arcade challenge!</strong></p>
-
-    <p><strong>Don't let the mice catch you – start playing today!</strong></p>
-  </div>
-
-  <div class="back-home">
-    <a href="https://nadeemgamingstudio.github.io">← Back to Home</a>
-  </div>
-  
-        <div class="footer">
-    &copy; 2025 Nadeem Gaming Studio
-  </div>
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-4 border-accent-pink/50 py-4 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2025 Nadeem Gaming Studio. All Rights Reserved. | <a href="https://nadeemgamingstudio.github.io/privacy" class="text-gray-400 hover:text-accent-yellow">Privacy Policy</a>
+        </div>
+    </footer>
 
 </body>
 </html>
