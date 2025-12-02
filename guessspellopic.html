@@ -1,170 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</title>
-  <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-            .navbar a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      background-color: #000;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .navbar {
-      background-color: #111;
-      padding: 10px 30px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 2px solid #222;
-    }
-
-    .header {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .header img {
-      max-width: 200px;
-      border-radius: 20px;
-      margin: 10px 0;
-    }
-
-    .section-title {
-      font-size: 1rem;
-      color: #fbd534;
-      margin: 10px 0;
-    }
-
-    .content {
-      max-width: 900px;
-      margin: 40px auto;
-      text-align: left;
-      font-size: 16px;
-      line-height: 1.8;
-      flex: 1;
-    }
-
-    h3 {
-      margin: 25px 0 10px;
-      color: #fbd534;
-    }
-
-    p {
-      margin: 10px 0 20px;
-    }
-
-    ul {
-      margin: 10px 0 20px 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #00ccff;
-      text-decoration: none;
-    }
-
-    .back-home {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-        .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    <h2>"Learn spellings by guessing words from real-life pictures! A fun A–Z word game."</h2>
-    <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Game Image" />
-    <div class="section-title">📥 Download Guess SpelloPic today — make spelling fun again!</div>
-    <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" target="_blank">
-      <img src="https://nadeemgamingstudio.github.io/GooglePlayLogo.png" alt="Get it on Google Play" />
-    </a>
-  </div>
-
-  <div class="content">
-    <title>Guess SpelloPic – Picture Word Puzzle Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</title>
+    <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
     
-    <h3>🧩 Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</h3>
-    <p><strong>Looking for a fun and educational word game?</strong><br>
-    Guess SpelloPic is the perfect choice for children and learners of all ages!<br>
-    Learn new words, improve spelling, and boost memory — all by identifying real pictures!</p>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration (Matching Studio Theme) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A', 
+                        'secondary-bg': '#1a1a1a', 
+                        'accent-pink': '#FF0066', 
+                        'accent-yellow': '#FBD534', 
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 20px rgba(255, 0, 102, 0.8)',
+                        'neon-yellow': '0 0 20px rgba(251, 213, 52, 0.8)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; 
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
 
-    <h3>🔠 What’s Inside the Game?</h3>
-    <h3>👶 A to Z Alphabet Learning</h3>
-    <ul>
-      <li>26 unique levels, one for each English alphabet letter (A–Z)</li>
-      <li>Each level shows a real picture and you must spell the word correctly using letter blocks</li>
-    </ul>
+    <!-- Back to Home Button (Fixed Top Left) -->
+    <a href="https://nadeemgamingstudio.github.io" 
+       class="fixed top-4 left-4 z-50 bg-secondary-bg text-accent-yellow px-4 py-2 rounded-full shadow-lg border border-border-dark hover:bg-gray-800 transition duration-300 flex items-center space-x-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>Back to Studio</span>
+    </a>
 
-    <h3>📸 Image-Based Word Categories</h3>
-    <p>Learn hundreds of words by identifying pictures from these fun categories:</p>
-    <ul>
-      <li>🐛 <strong>Insects & Bugs</strong> – 20 real-life images</li>
-      <li>🍎 <strong>Fruits</strong> – 60 colorful fruit photos</li>
-      <li>🥦 <strong>Vegetables</strong> – 20 fresh veggie images</li>
-      <li>👕 <strong>Clothes</strong> – 20 items from daily wear</li>
-      <li>🐘 <strong>Animals</strong> – 100 amazing animal images</li>
-      <li>🐦 <strong>Birds</strong> – 20 feathered friends to identify</li>
-    </ul>
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        <!-- Game Hero Section -->
+        <header class="text-center mb-12 p-6 bg-secondary-bg rounded-2xl shadow-2xl shadow-black/50 border-t-4 border-accent-yellow">
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 uppercase tracking-tighter">
+                GUESS <span class="text-accent-yellow">SPELLOPIC</span>
+            </h1>
+            <h2 class="text-lg sm:text-2xl font-semibold text-accent-pink italic">
+                "Learn spellings by guessing words from real-life pictures! A fun A–Z word game."
+            </h2>
 
-    <h3>🎯 Game Features</h3>
-    <ul>
-      <li>✔️ Easy gameplay: tap, spell, and learn</li>
-      <li>🖼️ Bright, high-quality images</li>
-      <li>🎓 Boosts vocabulary, spelling & memory</li>
-      <li>👶 Kid-friendly and safe design</li>
-      <li>📱 Works offline and on all screen sizes</li>
-      <li>🚫 No time limit — learn at your own pace</li>
-    </ul>
+            <!-- Game Image / Banner -->
+            <div class="mt-8 mb-6 flex justify-center">
+                <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Guess SpelloPic Game Banner" 
+                     class="max-w-xs sm:max-w-sm w-full rounded-3xl object-cover border-4 border-accent-pink shadow-neon-pink transition duration-500 hover:scale-[1.03]"
+                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/111/ff0066?text=SPELLOPIC'">
+            </div>
 
-    <h3>🌟 Why Kids & Parents Love Guess SpelloPic</h3>
-    <p>This app is more than just a game — it's an engaging learning tool for preschoolers, kindergarteners, and early learners.</p>
-    <p>Let your child explore, play, and grow with pictures, letters, and words!</p>
+            <!-- Download Button -->
+            <div class="mt-6">
+                <p class="text-xl font-bold text-text-light mb-4">📥 Download Today — Make Spelling Fun Again!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" target="_blank" 
+                   class="inline-block bg-accent-yellow text-primary-bg font-extrabold py-3 px-10 rounded-xl uppercase tracking-widest text-lg shadow-lg shadow-accent-yellow/50 transition duration-300 transform hover:scale-105 hover:shadow-neon-yellow">
+                    GET IT ON GOOGLE PLAY
+                </a>
+            </div>
+            
+        </header>
 
-    <p><strong>📥 Download Guess SpelloPic today — make spelling fun again!</strong></p>
+        <!-- Game Description and Features -->
+        <section class="mt-12 bg-secondary-bg p-8 rounded-2xl shadow-xl border border-border-dark">
+            
+            <h3 class="text-3xl font-bold text-accent-pink mb-6 border-b-2 border-gray-700 pb-3">
+                🧩 The Picture Word Puzzle for Smart Kids
+            </h3>
+            
+            <p class="text-gray-300 mb-6 text-lg">
+                <strong>Looking for a fun and educational word game?</strong> Guess SpelloPic is the perfect choice for children and learners of all ages! Learn new words, improve spelling, and boost memory — all by identifying real-life pictures!
+            </p>
 
-    <h3>⭐⭐⭐⭐⭐</h3>
-    <p><strong>अगर आपको गेम पसंद आए, तो प्लीज़ 5 स्टार रेटिंग देना न भूलें!<br>
-    आपके सुझाव हमें बेहतर बनाते हैं।</strong></p>
+            <!-- Gameplay/Content Structure -->
+            <div class="grid md:grid-cols-2 gap-8 mt-10">
+                
+                <div>
+                    <h4 class="text-2xl font-bold text-accent-yellow mb-4 flex items-center space-x-2">
+                        <span class="text-3xl">🔠</span> <span>A-Z Alphabet Learning & Levels</span>
+                    </h4>
+                    <ul class="space-y-3 text-gray-400 list-none pl-0">
+                        <li class="flex items-start">
+                            <span class="text-accent-pink mr-3 text-xl font-bold">●</span>
+                            <p><strong>26 Unique Levels:</strong> One dedicated level for each English alphabet letter (A–Z).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-accent-pink mr-3 text-xl font-bold">●</span>
+                            <p><strong>Picture-to-Word Challenge:</strong> Each level displays a high-quality real picture, and you must spell the corresponding word correctly using the provided letter blocks.</p>
+                        </li>
+                    </ul>
+                </div>
 
-    <div class="back-home">
-      <a href="https://nadeemgamingstudio.github.io">← Back to Home</a>
-    </div>
-  </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-accent-yellow mb-4 flex items-center space-x-2">
+                        <span class="text-3xl">📸</span> <span>Image-Based Word Categories</span>
+                    </h4>
+                    <p class="text-gray-400 mb-3">Learn hundreds of words across these exciting categories:</p>
+                    <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
+                        <li>🐛 <span class="font-semibold">Insects & Bugs</span> – 20 real-life images</li>
+                        <li>🍎 <span class="font-semibold">Fruits</span> – 60 colorful photos</li>
+                        <li>🥦 <span class="font-semibold">Vegetables</span> – 20 fresh veggie images</li>
+                        <li>👕 <span class="font-semibold">Clothes</span> – 20 daily wear items</li>
+                        <li>🐘 <span class="font-semibold">Animals</span> – 100 amazing animal images</li>
+                        <li>🐦 <span class="font-semibold">Birds</span> – 20 feathered friends to identify</li>
+                    </ul>
+                </div>
+            </div>
 
-  <div class="footer">
-    &copy; 2025 Nadeem Gaming Studio
-  </div>
+            <!-- Features and Why Love It -->
+            <div class="mt-10 pt-6 border-t border-gray-700">
+                <h4 class="text-2xl font-bold text-accent-pink mb-4 flex items-center space-x-2">
+                    <span class="text-3xl">🌟</span> <span>Why Parents and Kids Love SpelloPic</span>
+                </h4>
+                <div class="grid md:grid-cols-2 gap-6 text-gray-300">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>✔️ Easy gameplay: Tap, spell, and learn.</li>
+                        <li>🖼️ Bright, high-quality, real-life images.</li>
+                        <li>🎓 Boosts vocabulary, spelling & memory effectively.</li>
+                        <li>👶 Kid-friendly and completely safe design.</li>
+                    </ul>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>📱 Works offline and is optimized for all screen sizes.</li>
+                        <li>🚫 No time limit — kids can learn at their own comfortable pace.</li>
+                        <li>This app is an engaging learning tool for preschoolers and early learners.</li>
+                        <li>Let your child explore, play, and grow with pictures, letters, and words!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action Footer -->
+            <div class="mt-10 text-center pt-8 border-t border-gray-700">
+                <p class="text-xl font-semibold text-white mb-4">
+                    Download Guess SpelloPic today and unlock fun learning!
+                </p>
+                
+                <p class="text-2xl font-extrabold text-accent-yellow mb-4">⭐⭐⭐⭐⭐</p>
+                <p class="text-gray-400 italic mb-6">
+                    If you enjoy the game, please don't forget to give us a 5-star rating! Your valuable suggestions help us improve and grow.
+                </p>
+
+                <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" target="_blank" 
+                   class="inline-block bg-accent-pink text-white font-extrabold py-3 px-12 rounded-xl uppercase tracking-widest text-lg shadow-lg shadow-accent-pink/50 transition duration-300 transform hover:scale-105 hover:shadow-neon-pink">
+                    START LEARNING NOW
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-4 border-accent-yellow/50 py-4 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
+            &copy; 2025 Nadeem Gaming Studio. All Rights Reserved. | <a href="https://nadeemgamingstudio.github.io/privacy" class="text-gray-400 hover:text-accent-yellow">Privacy Policy</a>
+        </div>
+    </footer>
+
 </body>
 </html>
