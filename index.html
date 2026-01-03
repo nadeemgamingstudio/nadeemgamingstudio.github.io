@@ -30,6 +30,8 @@
                         'accent-yellow': '#FBD534', /* Yellow Gold Accent */
                         'accent-blue': '#00D4FF', /* Neon Blue */
                         'accent-purple': '#9D4EDD', /* Purple */
+                        'accent-red': '#FF0000', /* Red for Games */
+                        'accent-green': '#2ECC71', /* Green for Apps */
                         'text-light': '#e5e5e5',
                         'border-dark': '#333333',
                     },
@@ -41,6 +43,8 @@
                         'neon-pink': '0 0 15px rgba(255, 0, 102, 0.8)',
                         'neon-yellow': '0 0 15px rgba(251, 213, 52, 0.8)',
                         'neon-blue': '0 0 15px rgba(0, 212, 255, 0.8)',
+                        'neon-red': '0 0 15px rgba(255, 0, 0, 0.8)',
+                        'neon-green': '0 0 15px rgba(46, 204, 113, 0.8)',
                         'glow': '0 0 30px rgba(255, 0, 102, 0.5)',
                     },
                     animation: {
@@ -419,7 +423,7 @@
             <!-- Animated Stats -->
             <div class="flex flex-wrap justify-center gap-8 mb-12">
                 <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl font-bold text-accent-yellow mb-2">7+</div>
+                    <div class="text-4xl font-bold text-accent-yellow mb-2">8+</div>
                     <div class="text-gray-400 uppercase tracking-wider text-sm">Games</div>
                 </div>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="400">
@@ -427,19 +431,23 @@
                     <div class="text-gray-400 uppercase tracking-wider text-sm">Players</div>
                 </div>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="600">
-                    <div class="text-4xl font-bold text-accent-blue mb-2">100%</div>
+                    <div class="text-4xl font-bold text-accent-blue mb-2">1+</div>
+                    <div class="text-gray-400 uppercase tracking-wider text-sm">Apps</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="800">
+                    <div class="text-4xl font-bold text-accent-green mb-2">100%</div>
                     <div class="text-gray-400 uppercase tracking-wider text-sm">Fun Guaranteed</div>
                 </div>
             </div>
         </section>
         
-        <!-- Game Showcase Section -->
+        <!-- Games Section -->
         <section class="mb-24">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-white uppercase tracking-wider font-orbitron">
                     <span class="relative">
-                        <span class="text-accent-yellow glow-text">🎮 Featured</span> Games
-                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1 w-32 bg-gradient-to-r from-accent-pink to-accent-yellow rounded-full"></div>
+                        <span class="text-accent-red glow-text">🎮 OUR GAMES</span>
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1 w-32 bg-gradient-to-r from-accent-red to-accent-pink rounded-full"></div>
                     </span>
                 </h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">
@@ -451,20 +459,21 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 
                 <!-- Game 1: Cat vs Mouse Rain -->
-                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-glow transition-all duration-500 border border-gray-800 hover:border-accent-pink"
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-red transition-all duration-500 border border-gray-800 hover:border-accent-red"
                      data-aos="fade-up" data-aos-delay="100">
                     <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-pink/20 to-accent-yellow/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <img src="https://nadeemgamingstudio.github.io/CatvsMouseRain.png" alt="Cat vs Mouse Rain Cover" 
-                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-accent-pink text-white text-xs font-bold px-3 py-1 rounded-full">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-red/20 to-accent-pink/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/catvsmouserain/refs/heads/main/icon.png" alt="Cat vs Mouse Rain Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/FF0000?text=Cat+vs+Mouse'">
+                        <div class="absolute top-4 left-4 bg-accent-red text-white text-xs font-bold px-3 py-1 rounded-full">
                             HOT
                         </div>
                     </div>
                     <div class="flex justify-between items-start mb-3">
                         <div>
                             <h3 class="text-xl font-bold text-white group-hover:text-accent-yellow transition duration-300">
-                                Cat vs Mouse Rain
+                                Cat vs Mouse Rain: Chase Fun
                             </h3>
                             <p class="text-sm text-gray-400 mt-1">
                                 Addictive Arcade Challenge!
@@ -475,8 +484,8 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
-                        <a href="https://nadeemgamingstudio.github.io/catvsmouserain" 
-                           class="px-4 py-2 bg-gradient-to-r from-accent-pink to-accent-yellow text-white font-bold rounded-lg text-sm hover:shadow-neon-pink transition-all duration-300 transform hover:scale-105">
+                        <a href="https://nadeemgamingstudio.github.io/catvsmouserain/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-red to-accent-pink text-white font-bold rounded-lg text-sm hover:shadow-neon-red transition-all duration-300 transform hover:scale-105">
                             PLAY NOW
                         </a>
                         <div class="flex items-center text-yellow-400">
@@ -489,18 +498,19 @@
                     </div>
                 </div>
                 
-                <!-- Game 2: Guess SpelloPic -->
+                <!-- Game 2: Guess Pic Spelling -->
                 <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-yellow transition-all duration-500 border border-gray-800 hover:border-accent-yellow"
                      data-aos="fade-up" data-aos-delay="200">
                     <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
                         <div class="absolute inset-0 bg-gradient-to-tr from-accent-yellow/20 to-accent-blue/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <img src="https://nadeemgamingstudio.github.io/guessspellopic.png" alt="Guess SpelloPic Cover" 
-                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/icon.png" alt="Guess Pic Spelling Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/FBD534?text=Guess+Spelling'">
                     </div>
                     <div class="flex justify-between items-start mb-3">
                         <div>
                             <h3 class="text-xl font-bold text-white group-hover:text-accent-yellow transition duration-300">
-                                Guess SpelloPic
+                                Guess Pic Spelling - Quiz Game
                             </h3>
                             <p class="text-sm text-gray-400 mt-1">
                                 Fun Word & Picture Puzzle
@@ -511,7 +521,7 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
-                        <a href="https://nadeemgamingstudio.github.io/guessspellopic" 
+                        <a href="https://nadeemgamingstudio.github.io/guesspicspelling/" 
                            class="px-4 py-2 bg-gradient-to-r from-accent-yellow to-accent-blue text-white font-bold rounded-lg text-sm hover:shadow-neon-yellow transition-all duration-300 transform hover:scale-105">
                             PLAY NOW
                         </a>
@@ -524,34 +534,283 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- App 3: 12 Testers -->
+                
+                <!-- Game 3: Water Sort Puzzle -->
                 <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-blue transition-all duration-500 border border-gray-800 hover:border-accent-blue"
                      data-aos="fade-up" data-aos-delay="300">
                     <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
                         <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-accent-purple/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/Icons/refs/heads/main/12TestersTestersCommunity.png" alt="12 Testers Cover" 
-                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-accent-blue text-white text-xs font-bold px-3 py-1 rounded-full">
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/icon.png" alt="Water Sort Puzzle Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/00D4FF?text=Water+Sort'">
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-blue transition duration-300">
+                                Water Sort Puzzle - Color Game
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Relaxing Color Sorting Puzzle
+                            </p>
+                        </div>
+                        <div class="text-accent-purple text-2xl">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/watersortpuzzle/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-bold rounded-lg text-sm hover:shadow-neon-blue transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 4: Ball Maze Rotate -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-green transition-all duration-500 border border-gray-800 hover:border-accent-green"
+                     data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-green/20 to-accent-yellow/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/ballmazerotate/refs/heads/main/Icon.png" alt="Ball Maze Rotate Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/2ECC71?text=Ball+Maze'">
+                        <div class="absolute top-4 left-4 bg-accent-green text-white text-xs font-bold px-3 py-1 rounded-full">
                             NEW
                         </div>
                     </div>
                     <div class="flex justify-between items-start mb-3">
                         <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-green transition duration-300">
+                                Ball Maze Rotate | Puzzle Game
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Challenging Maze Puzzle
+                            </p>
+                        </div>
+                        <div class="text-accent-yellow text-2xl">
+                            <i class="fas fa-maze"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/ballmazerotate/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-green to-accent-yellow text-white font-bold rounded-lg text-sm hover:shadow-neon-green transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 5: Water Sort Color -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-blue transition-all duration-500 border border-gray-800 hover:border-accent-blue"
+                     data-aos="fade-up" data-aos-delay="500">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-accent-purple/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortcolor/refs/heads/main/icon.png" alt="Water Sort Color Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/3498db?text=Color+Sort'">
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
                             <h3 class="text-xl font-bold text-white group-hover:text-accent-blue transition duration-300">
-                                12 Testers Community
+                                Water Sort Color - Puzzle Game
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Color Sorting Brain Teaser
+                            </p>
+                        </div>
+                        <div class="text-accent-purple text-2xl">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/watersortcolor/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-bold rounded-lg text-sm hover:shadow-neon-blue transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 6: Indian Truck Simulator -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-red transition-all duration-500 border border-gray-800 hover:border-accent-red"
+                     data-aos="fade-up" data-aos-delay="600">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-red/20 to-accent-orange/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/indiantrucksimulator3dgame/refs/heads/main/icon.png" alt="Indian Truck Simulator Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/FF6B35?text=Truck+Sim'">
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-red transition duration-300">
+                                Indian Truck Simulator 3D Game
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Realistic Truck Driving
+                            </p>
+                        </div>
+                        <div class="text-accent-red text-2xl">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/indiantrucksimulator3dgame/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-red to-accent-orange text-white font-bold rounded-lg text-sm hover:shadow-neon-red transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 7: Indian Car Crazy Driving -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-pink transition-all duration-500 border border-gray-800 hover:border-accent-pink"
+                     data-aos="fade-up" data-aos-delay="700">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-pink/20 to-accent-purple/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/indiancarcrazydriving/refs/heads/main/icon.png" alt="Indian Car Crazy Driving Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/9D4EDD?text=Car+Driving'">
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-pink transition duration-300">
+                                Indian Car Crazy Driving Game
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Realistic Indian Car Driving
+                            </p>
+                        </div>
+                        <div class="text-accent-pink text-2xl">
+                            <i class="fas fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/indiancarcrazydriving/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-pink to-accent-purple text-white font-bold rounded-lg text-sm hover:shadow-neon-pink transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 8: Brick Game -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-yellow transition-all duration-500 border border-gray-800 hover:border-accent-yellow"
+                     data-aos="fade-up" data-aos-delay="800">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-yellow/20 to-accent-orange/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/brickgame/refs/heads/main/Icon.png" alt="Brick Game Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/FBD534?text=Brick+Game'">
+                        <div class="absolute top-4 left-4 bg-accent-yellow text-black text-xs font-bold px-3 py-1 rounded-full">
+                            CLASSIC
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-yellow transition duration-300">
+                                Brick Game:Retro Classic Block
+                            </h3>
+                            <p class="text-sm text-gray-400 mt-1">
+                                Retro Arcade Block Game
+                            </p>
+                        </div>
+                        <div class="text-accent-yellow text-2xl">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <a href="https://nadeemgamingstudio.github.io/brickgame/" 
+                           class="px-4 py-2 bg-gradient-to-r from-accent-yellow to-accent-orange text-white font-bold rounded-lg text-sm hover:shadow-neon-yellow transition-all duration-300 transform hover:scale-105">
+                            PLAY NOW
+                        </a>
+                        <div class="flex items-center text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Apps Section -->
+        <section class="mb-24">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-white uppercase tracking-wider font-orbitron">
+                    <span class="relative">
+                        <span class="text-accent-green glow-text">📱 OUR APPS</span>
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1 w-32 bg-gradient-to-r from-accent-green to-accent-blue rounded-full"></div>
+                    </span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Explore our community apps designed to connect gamers and enhance your gaming experience!
+                </p>
+            </div>
+            
+            <!-- Grid Layout for Apps -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- App 1: 12 Testers -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-neon-green transition-all duration-500 border border-gray-800 hover:border-accent-green"
+                     data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="relative overflow-hidden rounded-xl mb-5 aspect-video">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-green/20 to-accent-blue/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="https://raw.githubusercontent.com/nadeemgamingstudio/Icons/refs/heads/main/12TestersTestersCommunity.png" alt="12 Testers Cover" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                             onerror="this.src='https://placehold.co/600x400/1a1a1a/2ECC71?text=12+Testers'">
+                        <div class="absolute top-4 left-4 bg-accent-green text-white text-xs font-bold px-3 py-1 rounded-full">
+                            COMMUNITY
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-accent-green transition duration-300">
+                                12 Testers – Testers Community
                             </h3>
                             <p class="text-sm text-gray-400 mt-1">
                                 Join the testing community
                             </p>
                         </div>
-                        <div class="text-accent-purple text-2xl">
+                        <div class="text-accent-green text-2xl">
                             <i class="fas fa-users"></i>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
                         <a href="https://nadeemgamingstudio.github.io/12TestersTestersCommunity/" 
-                           class="px-4 py-2 bg-gradient-to-r from-accent-blue to-accent-purple text-white font-bold rounded-lg text-sm hover:shadow-neon-blue transition-all duration-300 transform hover:scale-105">
+                           class="px-4 py-2 bg-gradient-to-r from-accent-green to-accent-blue text-white font-bold rounded-lg text-sm hover:shadow-neon-green transition-all duration-300 transform hover:scale-105">
                             JOIN NOW
                         </a>
                         <div class="flex items-center text-yellow-400">
@@ -564,9 +823,9 @@
                     </div>
                 </div>
                 
-                <!-- Coming Soon Game Card -->
+                <!-- Coming Soon App Card -->
                 <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-glow transition-all duration-500 border-2 border-dashed border-gray-700 hover:border-accent-purple flex flex-col justify-center items-center text-center"
-                     data-aos="fade-up" data-aos-delay="400">
+                     data-aos="zoom-in" data-aos-delay="200">
                     <div class="mb-5 text-5xl text-gray-600 group-hover:text-accent-purple transition duration-500">
                         <i class="fas fa-plus-circle"></i>
                     </div>
@@ -574,12 +833,30 @@
                         COMING SOON
                     </h3>
                     <p class="text-gray-500 text-sm mb-5">
-                        Exciting new game in development
+                        Exciting new app in development
                     </p>
                     <div class="w-full bg-gray-800 rounded-full h-2.5 mb-1">
-                        <div class="bg-gradient-to-r from-accent-pink to-accent-purple h-2.5 rounded-full w-3/4"></div>
+                        <div class="bg-gradient-to-r from-accent-blue to-accent-purple h-2.5 rounded-full w-2/4"></div>
                     </div>
-                    <p class="text-xs text-gray-400">Development: 75% Complete</p>
+                    <p class="text-xs text-gray-400">Development: 50% Complete</p>
+                </div>
+                
+                <!-- Coming Soon App Card 2 -->
+                <div class="game-card group bg-gradient-to-br from-secondary-bg to-black p-6 rounded-2xl shadow-2xl hover:shadow-glow transition-all duration-500 border-2 border-dashed border-gray-700 hover:border-accent-yellow flex flex-col justify-center items-center text-center"
+                     data-aos="zoom-in" data-aos-delay="400">
+                    <div class="mb-5 text-5xl text-gray-600 group-hover:text-accent-yellow transition duration-500">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-500 group-hover:text-white transition duration-300 mb-2">
+                        YOUR IDEA?
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-5">
+                        Suggest your app idea
+                    </p>
+                    <a href="https://nadeemgamingstudio.github.io/Contact" 
+                       class="px-4 py-2 bg-gradient-to-r from-accent-yellow to-accent-orange text-black font-bold rounded-lg text-sm hover:shadow-neon-yellow transition-all duration-300 transform hover:scale-105">
+                        CONTACT US
+                    </a>
                 </div>
                 
             </div>
@@ -705,7 +982,7 @@
                                     </div>
                                     <div>
                                         <div class="text-sm text-gray-400">Games Made</div>
-                                        <div class="font-bold">7+ Titles</div>
+                                        <div class="font-bold">8+ Titles</div>
                                     </div>
                                 </div>
                             </div>
@@ -877,7 +1154,7 @@
             
             // Simple Particle Effect
             const particlesContainer = document.querySelector('.particles');
-            const colors = ['#FF0066', '#FBD534', '#00D4FF', '#9D4EDD'];
+            const colors = ['#FF0066', '#FBD534', '#00D4FF', '#9D4EDD', '#FF0000', '#2ECC71'];
             
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
