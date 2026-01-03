@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Site Verification - User provided -->
+    <meta name="google-site-verification" content="2aLXWXxR4swyZqs_5IfoNyqTdIX5C7wwk_ed8AV03ss" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Privacy Policy | Nadeem Gaming Studio</title>
+    <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Tailwind Configuration for Gaming Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A', /* Deep Black */
+                        'secondary-bg': '#1a1a1a', /* Dark Grey */
+                        'accent-pink': '#FF0066', /* Bright Pink Accent */
+                        'accent-yellow': '#FBD534', /* Yellow Gold Accent */
+                        'accent-blue': '#00D4FF', /* Neon Blue */
+                        'accent-purple': '#9D4EDD', /* Purple */
+                        'accent-red': '#FF0000', /* Red for Games */
+                        'accent-green': '#2ECC71', /* Green for Apps */
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 15px rgba(255, 0, 102, 0.8)',
+                        'neon-yellow': '0 0 15px rgba(251, 213, 52, 0.8)',
+                        'neon-blue': '0 0 15px rgba(0, 212, 255, 0.8)',
+                        'neon-red': '0 0 15px rgba(255, 0, 0, 0.8)',
+                        'neon-green': '0 0 15px rgba(46, 204, 113, 0.8)',
+                        'glow': '0 0 30px rgba(255, 0, 102, 0.5)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'slide': 'slide 20s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&display=swap');
+        
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Top Bar */
+        .top-animated-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff9900, #ffff00, #33ff00, 
+                #0099ff, #6633ff, #ff00ff, #ff0000);
+            background-size: 800% 100%;
+            animation: colorSlide 10s linear infinite;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Animated Side Bars */
+        .side-animated-bar {
+            position: fixed;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                #ff0000, #ff9900, #ffff00, #33ff00, 
+                #0099ff, #6633ff, #ff00ff, #ff0000);
+            background-size: 100% 800%;
+            animation: colorSlideVertical 15s linear infinite;
+            z-index: 99;
+        }
+        
+        .left-bar {
+            left: 0;
+        }
+        
+        .right-bar {
+            right: 0;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #111;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #FF0066, #FBD534);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #FBD534, #FF0066);
+        }
+        
+        /* Animations */
+        @keyframes colorSlide {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 800% 0%;
+            }
+        }
+        
+        @keyframes colorSlideVertical {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 0% 800%;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Glowing Text Effect */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF0066, #FBD534);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+        }
+        
+        .scroll-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 102, 0.9);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #FF0066;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #FF0066; }
+        }
+        
+        /* Privacy Policy Specific Styles */
+        .policy-section {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .policy-section:hover {
+            transform: translateX(10px);
+        }
+        
+        .policy-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .update-badge {
+            background-color: #FF0066;
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .side-animated-bar {
+                display: none;
+            }
+            .scroll-top-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
+    
+    <!-- Animated Color Bars -->
+    <div class="top-animated-bar"></div>
+    <div class="side-animated-bar left-bar"></div>
+    <div class="side-animated-bar right-bar"></div>
+    
+    <!-- Particle Background -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-secondary-bg/90 backdrop-blur-md shadow-2xl shadow-black/70 border-b-2 border-accent-pink">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <div class="flex items-center space-x-3" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative">
+                    <a href="https://nadeemgamingstudio.github.io">
+                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" 
+                             class="h-10 w-10 rounded-xl border-2 border-accent-yellow p-0.5 animate-spin-slow"
+                             onerror="this.src='https://placehold.co/40x40/1a1a1a/f06?text=NGS'">
+                    </a>
+                    <div class="absolute -top-1 -right-1 h-4 w-4 bg-accent-pink rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider text-white font-orbitron bg-gradient-to-r from-accent-pink to-accent-yellow bg-clip-text text-transparent">
+                        NAD<span class="text-accent-yellow">EE</span>M GAMING
+                    </span>
+                    <div class="text-xs text-accent-blue font-bold tracking-widest uppercase mt-0.5">
+                        <i class="fas fa-gamepad mr-1"></i> STUDIO
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="space-x-4 flex items-center" data-aos="fade-left" data-aos-duration="1000">
+                <a href="https://nadeemgamingstudio.github.io" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i> HOME
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-pink to-accent-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-pink rounded-xl"></div>
+                </a>
+                
+                <a href="https://nadeemgamingstudio.github.io/Contact" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> CONTACT
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-blue to-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-blue rounded-xl"></div>
+                </a>
+                
+                <!-- Active Privacy Policy Link -->
+                <a href="#" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i> PRIVACY POLICY
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-green to-accent-blue opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-green rounded-xl"></div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
+        
+        <!-- Hero Section for Privacy Policy -->
+        <section class="text-center mb-16" data-aos="fade-up" data-aos-duration="1200">
+            <div class="bg-gradient-to-br from-gray-900 to-black p-10 rounded-3xl shadow-2xl border border-gray-800 relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-60 h-60 bg-accent-pink/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-accent-blue/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl font-black mb-6 font-orbitron">
+                        <span class="bg-gradient-to-r from-accent-blue to-accent-green bg-clip-text text-transparent">
+                            <i class="fas fa-shield-alt mr-4"></i>PRIVACY POLICY
+                        </span>
+                    </h1>
+                    
+                    <div class="typewriter text-2xl md:text-3xl font-bold text-white mb-8 max-w-3xl mx-auto">
+                        Your Privacy Matters to Us!
+                    </div>
+                    
+                    <p class="text-xl text-gray-300 max-w-4xl mx-auto mb-10 leading-relaxed">
+                        At Nadeem Gaming Studio, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our games and services.
+                    </p>
+                    
+                    <!-- Last Updated -->
+                    <div class="inline-flex items-center bg-gray-800/50 px-6 py-3 rounded-full border border-accent-green/30 mb-6">
+                        <i class="fas fa-clock text-accent-green mr-3"></i>
+                        <span class="text-gray-300">Last Updated: <span class="font-bold text-accent-yellow">January 2025</span></span>
+                        <span class="policy-badge update-badge ml-3">UPDATED</span>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="flex flex-wrap justify-center gap-8 mt-10">
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-blue mb-2">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Data Protection</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-green mb-2">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Secure Encryption</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-yellow mb-2">
+                                <i class="fas fa-eye-slash"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">No Data Selling</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-pink mb-2">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">COPPA Compliant</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Table of Contents -->
+        <section class="mb-16" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                    <i class="fas fa-list text-accent-yellow mr-3"></i>
+                    <span class="bg-gradient-to-r from-accent-yellow to-accent-blue bg-clip-text text-transparent">
+                        Table of Contents
+                    </span>
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <a href="#information-collection" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-blue transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-blue/20 flex items-center justify-center text-accent-blue mr-3">
+                                <span class="font-bold">1</span>
+                            </div>
+                            <span class="text-gray-300">Information We Collect</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#data-usage" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-green transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-green/20 flex items-center justify-center text-accent-green mr-3">
+                                <span class="font-bold">2</span>
+                            </div>
+                            <span class="text-gray-300">How We Use Your Data</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#data-protection" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-pink transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-pink/20 flex items-center justify-center text-accent-pink mr-3">
+                                <span class="font-bold">3</span>
+                            </div>
+                            <span class="text-gray-300">Data Protection</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#third-party" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-purple transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-purple/20 flex items-center justify-center text-accent-purple mr-3">
+                                <span class="font-bold">4</span>
+                            </div>
+                            <span class="text-gray-300">Third-Party Services</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#children-privacy" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-yellow transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-yellow/20 flex items-center justify-center text-accent-yellow mr-3">
+                                <span class="font-bold">5</span>
+                            </div>
+                            <span class="text-gray-300">Children's Privacy</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#contact" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-red transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-red/20 flex items-center justify-center text-accent-red mr-3">
+                                <span class="font-bold">6</span>
+                            </div>
+                            <span class="text-gray-300">Contact Us</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Content -->
+        <section class="space-y-12">
+            
+            <!-- Section 1: Information Collection -->
+            <div id="information-collection" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-blue to-accent-green flex items-center justify-center text-white text-xl font-bold mr-4">
+                        1
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-blue to-accent-green bg-clip-text text-transparent">
+                            Information We Collect
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-accent-blue">
+                        <h3 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-gamepad text-accent-blue mr-3"></i>
+                            Game Usage Data
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            When you play our games, we may collect anonymous gameplay data such as:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Game progress and achievements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Session duration and frequency</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">In-game preferences and settings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Device information (model, OS version)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-accent-green">
+                        <h3 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-adjust text-accent-green mr-3"></i>
+                            Advertising Data
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Our free games may display ads. We or our advertising partners may collect:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-ad text-accent-yellow mr-2 mt-1"></i>
+                                <span class="text-gray-300">Ad views and interactions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-ad text-accent-yellow mr-2 mt-1"></i>
+                                <span class="text-gray-300">General location data (country-level)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-ad text-accent-yellow mr-2 mt-1"></i>
+                                <span class="text-gray-300">Device identifiers for personalized ads</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-accent-yellow">
+                        <h3 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-shopping-cart text-accent-yellow mr-3"></i>
+                            In-App Purchases
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            If you make purchases within our games, the app store (Google Play Store) processes your payment. We only receive:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-receipt text-accent-pink mr-2 mt-1"></i>
+                                <span class="text-gray-300">Purchase confirmation and item details</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-receipt text-accent-pink mr-2 mt-1"></i>
+                                <span class="text-gray-300">No payment or financial information</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-accent-blue/10 rounded-xl border border-accent-blue/30">
+                    <p class="text-gray-300 text-sm flex items-center">
+                        <i class="fas fa-info-circle text-accent-blue mr-2"></i>
+                        <strong>Important:</strong> We do not collect personal information like your name, email address, or phone number unless you voluntarily provide it through our contact forms.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 2: How We Use Your Data -->
+            <div id="data-usage" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-green to-accent-yellow flex items-center justify-center text-white text-xl font-bold mr-4">
+                        2
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-green to-accent-yellow bg-clip-text text-transparent">
+                            How We Use Your Data
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-green transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-green">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Game Improvement</h3>
+                        <p class="text-gray-300">
+                            We analyze gameplay data to improve game mechanics, fix bugs, and enhance user experience.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-yellow transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-yellow">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Analytics</h3>
+                        <p class="text-gray-300">
+                            Understanding how players interact with our games helps us create better content and features.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-blue transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-blue">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Advertising</h3>
+                        <p class="text-gray-300">
+                            We show relevant ads to support our free games. You can opt-out of personalized ads in device settings.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-pink transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-pink">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Customer Support</h3>
+                        <p class="text-gray-300">
+                            If you contact us, we use your information to respond to your queries and provide support.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-gray-800/50 rounded-2xl border border-accent-yellow/30">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fas fa-ban text-accent-red mr-3"></i>
+                        What We Don't Do
+                    </h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">We do not sell your personal data to third parties</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">We do not use your data for purposes unrelated to our games</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">We do not share your data without your consent (except as required by law)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 3: Data Protection -->
+            <div id="data-protection" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-pink to-accent-purple flex items-center justify-center text-white text-xl font-bold mr-4">
+                        3
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-pink to-accent-purple bg-clip-text text-transparent">
+                            Data Protection & Security
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-lock text-accent-green mr-3"></i>
+                            Security Measures
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            We implement appropriate technical and organizational measures to protect your data:
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-shield-alt text-accent-green text-xl mr-3"></i>
+                                <span class="text-gray-300">Encryption of sensitive data</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-server text-accent-blue text-xl mr-3"></i>
+                                <span class="text-gray-300">Secure server infrastructure</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-user-lock text-accent-yellow text-xl mr-3"></i>
+                                <span class="text-gray-300">Access controls and authentication</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-history text-accent-pink text-xl mr-3"></i>
+                                <span class="text-gray-300">Regular security audits</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-database text-accent-blue mr-3"></i>
+                            Data Retention
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            We retain your data only for as long as necessary:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-gray-300">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="py-3 px-4 text-left">Data Type</th>
+                                        <th class="py-3 px-4 text-left">Retention Period</th>
+                                        <th class="py-3 px-4 text-left">Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">Gameplay Data</td>
+                                        <td class="py-3 px-4">2 years</td>
+                                        <td class="py-3 px-4">Analytics & Improvement</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">Crash Reports</td>
+                                        <td class="py-3 px-4">1 year</td>
+                                        <td class="py-3 px-4">Bug Fixing</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">Contact Information</td>
+                                        <td class="py-3 px-4">Until request deletion</td>
+                                        <td class="py-3 px-4">Customer Support</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-accent-green/10 rounded-xl border border-accent-green/30">
+                    <p class="text-gray-300 text-sm flex items-center">
+                        <i class="fas fa-shield-alt text-accent-green mr-2"></i>
+                        <strong>Security Note:</strong> While we implement strong security measures, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 4: Third-Party Services -->
+            <div id="third-party" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue flex items-center justify-center text-white text-xl font-bold mr-4">
+                        4
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-purple to-accent-blue bg-clip-text text-transparent">
+                            Third-Party Services
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="p-6 bg-gray-800/50 rounded-2xl mb-6">
+                    <p class="text-gray-300 mb-6">
+                        Our games may use third-party services that have their own privacy policies. These services help us with:
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500 mr-3">
+                                    <i class="fab fa-google"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Google Services</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                We use Google Play Services for achievements, leaderboards, and cloud saves. Please review Google's Privacy Policy.
+                            </p>
+                            <a href="https://policies.google.com/privacy" target="_blank" class="text-accent-blue text-sm hover:underline mt-2 inline-block">
+                                <i class="fas fa-external-link-alt mr-1"></i> View Google Privacy Policy
+                            </a>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 mr-3">
+                                    <i class="fas fa-ad"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Advertising Networks</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                We use ad networks like AdMob to display ads in our free games. These networks may collect data for personalized advertising.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Analytics Services</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                We use analytics tools to understand how players use our games, which helps us improve gameplay experience.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-gray-800/50 rounded-2xl border border-accent-purple/30">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-accent-yellow mr-3"></i>
+                        Important Notice
+                    </h4>
+                    <p class="text-gray-300">
+                        Third-party services have their own privacy policies. We encourage you to review their policies as we are not responsible for their practices. You can often opt-out of personalized advertising through your device settings.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 5: Children's Privacy -->
+            <div id="children-privacy" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-yellow to-accent-red flex items-center justify-center text-white text-xl font-bold mr-4">
+                        5
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-yellow to-accent-red bg-clip-text text-transparent">
+                            Children's Privacy
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-yellow text-center">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center">COPPA Compliance</h3>
+                        <p class="text-gray-300 text-center">
+                            Our games are compliant with the Children's Online Privacy Protection Act (COPPA). We do not knowingly collect personal information from children under 13.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-red text-center">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center">Parental Control</h3>
+                        <p class="text-gray-300 text-center">
+                            If you believe we have collected information from a child under 13, please contact us immediately so we can remove the information.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-6 bg-gray-800/50 rounded-2xl">
+                    <h4 class="text-lg font-bold text-white mb-3">For Parents & Guardians</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-green mr-2 mt-1"></i>
+                            <span class="text-gray-300">Our games are designed to be family-friendly</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-green mr-2 mt-1"></i>
+                            <span class="text-gray-300">We limit data collection for all users, especially children</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-green mr-2 mt-1"></i>
+                            <span class="text-gray-300">You can contact us to review or delete your child's data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent-green mr-2 mt-1"></i>
+                            <span class="text-gray-300">We encourage parental supervision of children's gaming activities</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 6: Contact & Updates -->
+            <div id="contact" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-red to-accent-pink flex items-center justify-center text-white text-xl font-bold mr-4">
+                        6
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-red to-accent-pink bg-clip-text text-transparent">
+                            Contact & Policy Updates
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-envelope text-accent-blue mr-3"></i>
+                            Contact Us
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            If you have any questions about this Privacy Policy or our data practices, please contact us:
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="p-4 bg-gray-900/50 rounded-xl">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-globe text-accent-yellow mr-2"></i>
+                                    <span class="font-bold text-white">Website</span>
+                                </div>
+                                <a href="https://nadeemgamingstudio.github.io" class="text-accent-blue hover:underline">
+                                    https://nadeemgamingstudio.github.io
+                                </a>
+                            </div>
+                            
+                            <div class="p-4 bg-gray-900/50 rounded-xl">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-envelope text-accent-pink mr-2"></i>
+                                    <span class="font-bold text-white">Email</span>
+                                </div>
+                                <a href="mailto:contact@nadeemgamingstudio.com" class="text-accent-blue hover:underline">
+                                    nadeemgamer180@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="https://nadeemgamingstudio.github.io/Contact" 
+                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent-pink to-accent-yellow text-white font-bold rounded-xl hover:shadow-glow transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-3"></i>
+                                Go to Contact Page
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-sync-alt text-accent-green mr-3"></i>
+                            Policy Updates
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            We may update this Privacy Policy from time to time. We will notify you of any changes by:
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-bell text-accent-yellow mr-3"></i>
+                                <span class="text-gray-300">Posting the new Privacy Policy on this page</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-gamepad text-accent-blue mr-3"></i>
+                                <span class="text-gray-300">Updating the "Last Updated" date at the top</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle text-accent-pink mr-3"></i>
+                                <span class="text-gray-300">In-app notifications for significant changes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-accent-yellow/10 rounded-xl border border-accent-yellow/30">
+                            <p class="text-gray-300 text-sm">
+                                <i class="fas fa-lightbulb text-accent-yellow mr-2"></i>
+                                <strong>Your Responsibility:</strong> We encourage you to review this Privacy Policy periodically for any changes. Changes are effective when they are posted on this page.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Call to Action -->
+        <section class="mt-16 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="bg-gradient-to-r from-accent-blue/10 to-accent-green/10 p-10 rounded-3xl border-2 border-dashed border-accent-blue/50">
+                <h3 class="text-3xl font-bold text-white mb-6">
+                    Need More Information?
+                </h3>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    If you have any questions about how we handle your data or if you want to exercise your privacy rights, don't hesitate to reach out to us.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="https://nadeemgamingstudio.github.io/Contact" 
+                       class="px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-green text-white font-bold rounded-xl hover:shadow-neon-blue transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-headset text-xl mr-3"></i>
+                            Contact Support
+                        </span>
+                    </a>
+                    
+                    <a href="https://nadeemgamingstudio.github.io" 
+                       class="px-8 py-4 bg-gray-800 text-white font-bold rounded-xl border-2 border-gray-700 hover:border-accent-pink hover:shadow-neon-pink transition-all duration-300">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-home text-xl mr-3"></i>
+                            Back to Home
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 text-gray-400 text-sm">
+                    <p>
+                        <i class="fas fa-heart text-accent-pink mr-2"></i>
+                        Thank you for trusting Nadeem Gaming Studio with your gaming experience!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-2 border-accent-pink/30 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" class="h-10 w-10 rounded-xl">
+                        <span class="text-xl font-black tracking-wider text-white font-orbitron">NADEEM GAMING</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Creating fun, engaging and memorable gaming experiences for players worldwide.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-yellow pl-3">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://nadeemgamingstudio.github.io" class="text-gray-400 hover:text-accent-pink transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/Contact" class="text-gray-400 hover:text-accent-yellow transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent-green transition duration-300 text-accent-green font-bold"><i class="fas fa-chevron-right text-xs mr-2 text-accent-green"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-pink pl-3">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-pink hover:shadow-neon-pink transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-yellow hover:shadow-neon-yellow transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-blue hover:shadow-neon-blue transition duration-300">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-purple hover:shadow-neon-pink transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-envelope text-accent-yellow mr-2"></i>
+                        nadeemgamer180@gmail.com
+                    </p>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        &copy; 2025 <span class="text-accent-yellow font-bold">Nadeem Gaming Studio</span>. All Rights Reserved.
+                    </div>
+                    <div>
+                        Crafted with <i class="fas fa-heart text-accent-pink mx-1"></i> by Mr. Nadeem
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: false,
+                offset: 100
+            });
+            
+            // Scroll to Top Button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for table of contents links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Simple Particle Effect
+            const particlesContainer = document.querySelector('.particles');
+            const colors = ['#FF0066', '#FBD534', '#00D4FF', '#9D4EDD', '#2ECC71'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+                
+                // Add animation
+                particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Typewriter Effect
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                setTimeout(() => {
+                    typewriterElement.style.animation = 'none';
+                    setTimeout(() => {
+                        typewriterElement.style.borderRight = 'none';
+                    }, 500);
+                }, 4000);
+            }
+            
+            // Highlight active section while scrolling
+            const sections = document.querySelectorAll('.policy-section');
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            function highlightActiveSection() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-accent-green');
+                    link.classList.add('text-gray-400');
+                    
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.remove('text-gray-400');
+                        link.classList.add('text-accent-green');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightActiveSection);
+        });
+    </script>
+</body>
+</html>
