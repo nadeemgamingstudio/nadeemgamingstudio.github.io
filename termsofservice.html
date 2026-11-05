@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Site Verification - User provided -->
+    <meta name="google-site-verification" content="2aLXWXxR4swyZqs_5IfoNyqTdIX5C7wwk_ed8AV03ss" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terms of Service | Nadeem Gaming Studio</title>
+    <link rel="icon" href="nadeemgamingstudio.ico" type="image/x-icon"/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Tailwind Configuration for Gaming Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A', /* Deep Black */
+                        'secondary-bg': '#1a1a1a', /* Dark Grey */
+                        'accent-pink': '#FF0066', /* Bright Pink Accent */
+                        'accent-yellow': '#FBD534', /* Yellow Gold Accent */
+                        'accent-blue': '#00D4FF', /* Neon Blue */
+                        'accent-purple': '#9D4EDD', /* Purple */
+                        'accent-red': '#FF0000', /* Red for Games */
+                        'accent-green': '#2ECC71', /* Green for Apps */
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 15px rgba(255, 0, 102, 0.8)',
+                        'neon-yellow': '0 0 15px rgba(251, 213, 52, 0.8)',
+                        'neon-blue': '0 0 15px rgba(0, 212, 255, 0.8)',
+                        'neon-red': '0 0 15px rgba(255, 0, 0, 0.8)',
+                        'neon-green': '0 0 15px rgba(46, 204, 113, 0.8)',
+                        'glow': '0 0 30px rgba(255, 0, 102, 0.5)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'slide': 'slide 20s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&display=swap');
+        
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Top Bar */
+        .top-animated-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff9900, #ffff00, #33ff00, 
+                #0099ff, #6633ff, #ff00ff, #ff0000);
+            background-size: 800% 100%;
+            animation: colorSlide 10s linear infinite;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Animated Side Bars */
+        .side-animated-bar {
+            position: fixed;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                #ff0000, #ff9900, #ffff00, #33ff00, 
+                #0099ff, #6633ff, #ff00ff, #ff0000);
+            background-size: 100% 800%;
+            animation: colorSlideVertical 15s linear infinite;
+            z-index: 99;
+        }
+        
+        .left-bar {
+            left: 0;
+        }
+        
+        .right-bar {
+            right: 0;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #111;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #FF0066, #FBD534);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #FBD534, #FF0066);
+        }
+        
+        /* Animations */
+        @keyframes colorSlide {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 800% 0%;
+            }
+        }
+        
+        @keyframes colorSlideVertical {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 0% 800%;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Particle Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Glowing Text Effect */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF0066, #FBD534);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 102, 0.7);
+        }
+        
+        .scroll-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 102, 0.9);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #FF0066;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #FF0066; }
+        }
+        
+        /* Terms Specific Styles */
+        .policy-section {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .policy-section:hover {
+            transform: translateX(10px);
+        }
+        
+        .policy-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .update-badge {
+            background-color: #FF0066;
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .side-animated-bar {
+                display: none;
+            }
+            .scroll-top-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
+    
+    <!-- Animated Color Bars -->
+    <div class="top-animated-bar"></div>
+    <div class="side-animated-bar left-bar"></div>
+    <div class="side-animated-bar right-bar"></div>
+    
+    <!-- Particle Background -->
+    <div class="particles" id="particles-js"></div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-secondary-bg/90 backdrop-blur-md shadow-2xl shadow-black/70 border-b-2 border-accent-pink">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <div class="flex items-center space-x-3" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative">
+                    <a href="https://nadeemgamingstudio.github.io">
+                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" 
+                             class="h-10 w-10 rounded-xl border-2 border-accent-yellow p-0.5 animate-spin-slow"
+                             onerror="this.src='https://placehold.co/40x40/1a1a1a/f06?text=NGS'">
+                    </a>
+                    <div class="absolute -top-1 -right-1 h-4 w-4 bg-accent-pink rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider text-white font-orbitron bg-gradient-to-r from-accent-pink to-accent-yellow bg-clip-text text-transparent">
+                        NAD<span class="text-accent-yellow">EE</span>M GAMING
+                    </span>
+                    <div class="text-xs text-accent-blue font-bold tracking-widest uppercase mt-0.5">
+                        <i class="fas fa-gamepad mr-1"></i> STUDIO
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="space-x-4 flex items-center" data-aos="fade-left" data-aos-duration="1000">
+                <a href="https://nadeemgamingstudio.github.io" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i> HOME
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-pink to-accent-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-pink rounded-xl"></div>
+                </a>
+                
+                <a href="https://nadeemgamingstudio.github.io/Contact" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> CONTACT
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-blue to-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-blue rounded-xl"></div>
+                </a>
+                
+                <!-- Terms of Service Link -->
+                <a href="#" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-file-contract mr-2"></i> TERMS OF SERVICE
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-yellow to-accent-pink opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-yellow rounded-xl"></div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
+        
+        <!-- Hero Section for Terms of Service -->
+        <section class="text-center mb-16" data-aos="fade-up" data-aos-duration="1200">
+            <div class="bg-gradient-to-br from-gray-900 to-black p-10 rounded-3xl shadow-2xl border border-gray-800 relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-60 h-60 bg-accent-yellow/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-accent-pink/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl font-black mb-6 font-orbitron">
+                        <span class="bg-gradient-to-r from-accent-yellow to-accent-pink bg-clip-text text-transparent">
+                            <i class="fas fa-file-contract mr-4"></i>TERMS OF SERVICE
+                        </span>
+                    </h1>
+                    
+                    <div class="typewriter text-2xl md:text-3xl font-bold text-white mb-8 max-w-3xl mx-auto">
+                        Welcome to Nadeem Gaming Studio!
+                    </div>
+                    
+                    <p class="text-xl text-gray-300 max-w-4xl mx-auto mb-10 leading-relaxed">
+                        These Terms of Service govern your access to and use of mobile applications, games, and services provided by Nadeem Gaming Studio. By accessing or using our apps and games, you agree to be bound by these terms.
+                    </p>
+                    
+                    <!-- Last Updated -->
+                    <div class="inline-flex items-center bg-gray-800/50 px-6 py-3 rounded-full border border-accent-yellow/30 mb-6">
+                        <i class="fas fa-clock text-accent-yellow mr-3"></i>
+                        <span class="text-gray-300">Last Updated: <span class="font-bold text-accent-yellow">January 2026</span></span>
+                        <span class="policy-badge update-badge ml-3">ACTIVE</span>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="flex flex-wrap justify-center gap-8 mt-10">
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-yellow mb-2">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Fair Play Rules</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-pink mb-2">
+                                <i class="fas fa-copyright"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">IP Protection</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-blue mb-2">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">In-App Purchases</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-accent-green mb-2">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">User Agreement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Table of Contents -->
+        <section class="mb-16" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                    <i class="fas fa-list text-accent-yellow mr-3"></i>
+                    <span class="bg-gradient-to-r from-accent-yellow to-accent-blue bg-clip-text text-transparent">
+                        Table of Contents
+                    </span>
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <a href="#acceptance-terms" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-yellow transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-yellow/20 flex items-center justify-center text-accent-yellow mr-3">
+                                <span class="font-bold">1</span>
+                            </div>
+                            <span class="text-gray-300">Acceptance of Terms</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#user-license" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-green transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-green/20 flex items-center justify-center text-accent-green mr-3">
+                                <span class="font-bold">2</span>
+                            </div>
+                            <span class="text-gray-300">Use License & Restrictions</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#in-app-purchases" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-pink transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-pink/20 flex items-center justify-center text-accent-pink mr-3">
+                                <span class="font-bold">3</span>
+                            </div>
+                            <span class="text-gray-300">In-App Purchases & Virtual Goods</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#intellectual-property" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-purple transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-purple/20 flex items-center justify-center text-accent-purple mr-3">
+                                <span class="font-bold">4</span>
+                            </div>
+                            <span class="text-gray-300">Intellectual Property</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#limitation-liability" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-blue transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-blue/20 flex items-center justify-center text-accent-blue mr-3">
+                                <span class="font-bold">5</span>
+                            </div>
+                            <span class="text-gray-300">Limitation of Liability</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#contact-governing" class="policy-section p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-accent-red transition duration-300">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-red/20 flex items-center justify-center text-accent-red mr-3">
+                                <span class="font-bold">6</span>
+                            </div>
+                            <span class="text-gray-300">Contact & Governing Law</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms of Service Content -->
+        <section class="space-y-12">
+            
+            <!-- Section 1: Acceptance of Terms -->
+            <div id="acceptance-terms" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-yellow to-accent-pink flex items-center justify-center text-white text-xl font-bold mr-4">
+                        1
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-yellow to-accent-pink bg-clip-text text-transparent">
+                            Acceptance of Terms
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-accent-yellow">
+                        <h3 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-check-double text-accent-yellow mr-3"></i>
+                            Agreement to Terms
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            By downloading, installing, or playing any apps and games developed by Nadeem Gaming Studio, you confirm that you accept these Terms of Service:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">You agree to follow all rules and guidelines specified in this document</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">If you do not agree to these terms, please refrain from using our games and applications</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">These terms apply to all visitors, users, and players of our services</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-accent-pink">
+                        <h3 class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-user-shield text-accent-pink mr-3"></i>
+                            Age Requirements
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            You must meet legal age standards or have parental consent to use our applications:
+                        </p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-accent-yellow mr-2 mt-1"></i>
+                                <span class="text-gray-300">Minors must obtain permission from a parent or legal guardian</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-accent-yellow mr-2 mt-1"></i>
+                                <span class="text-gray-300">Parents are responsible for supervising their children's activities and purchases</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-accent-yellow/10 rounded-xl border border-accent-yellow/30">
+                    <p class="text-gray-300 text-sm flex items-center">
+                        <i class="fas fa-info-circle text-accent-yellow mr-2"></i>
+                        <strong>Important Note:</strong> Your privacy is also vital to us. Please refer to our <a href="https://nadeemgamingstudio.github.io/privacypolicy.html" class="text-accent-blue underline hover:text-accent-pink ml-1">Privacy Policy</a> for information on how we handle user data.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 2: Use License & Restrictions -->
+            <div id="user-license" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-green to-accent-blue flex items-center justify-center text-white text-xl font-bold mr-4">
+                        2
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-green to-accent-blue bg-clip-text text-transparent">
+                            Use License & Restrictions
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-green transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-green">
+                            <i class="fas fa-id-badge"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Limited Personal License</h3>
+                        <p class="text-gray-300">
+                            We grant you a non-exclusive, non-transferable, revocable limited license to download and play our games for personal, non-commercial entertainment.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-red transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-red">
+                            <i class="fas fa-user-slash"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Fair Play & Anti-Cheating</h3>
+                        <p class="text-gray-300">
+                            Using cheats, exploits, automated software, bots, hacks, or any unauthorized third-party software to modify game code is strictly prohibited.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-yellow transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-yellow">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">No Reverse Engineering</h3>
+                        <p class="text-gray-300">
+                            You may not decompile, reverse engineer, disassemble, modify, or create derivative works of any games or software owned by Nadeem Gaming Studio.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-pink transition duration-300">
+                        <div class="text-4xl mb-4 text-accent-pink">
+                            <i class="fas fa-store-slash"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">No Unauthorized Distribution</h3>
+                        <p class="text-gray-300">
+                            You must not copy, distribute, sell, lease, or rent any portion of our applications or content without prior written permission from us.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-gray-800/50 rounded-2xl border border-accent-red/30">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fas fa-ban text-accent-red mr-3"></i>
+                        Prohibited Activities
+                    </h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">Attempting to disrupt or overburden game servers and network infrastructure</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">Exploiting bugs or glitches for unfair game progression or virtual currency gains</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-accent-red mr-2 mt-1"></i>
+                            <span class="text-gray-300">Impersonating Nadeem Gaming Studio representatives or other players</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 3: In-App Purchases & Virtual Goods -->
+            <div id="in-app-purchases" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-pink to-accent-purple flex items-center justify-center text-white text-xl font-bold mr-4">
+                        3
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-pink to-accent-purple bg-clip-text text-transparent">
+                            In-App Purchases & Virtual Items
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-shopping-bag text-accent-pink mr-3"></i>
+                            Virtual Currency & Store Items
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            Our games may offer virtual currency, coins, or items that can be acquired through gameplay or paid in-app purchases:
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-coins text-accent-yellow text-xl mr-3"></i>
+                                <span class="text-gray-300">Virtual items have no real-world monetary value</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-hand-holding-usd text-accent-green text-xl mr-3"></i>
+                                <span class="text-gray-300">Purchases are non-transferable between accounts</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fab fa-google-play text-accent-blue text-xl mr-3"></i>
+                                <span class="text-gray-300">Processed securely via Google Play Billing</span>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-900/50 rounded-lg">
+                                <i class="fas fa-undo text-accent-pink text-xl mr-3"></i>
+                                <span class="text-gray-300">Refund policies governed by Google Play Store</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-receipt text-accent-blue mr-3"></i>
+                            Payment Terms
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            Details regarding transactions and payment processing:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-gray-300">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="py-3 px-4 text-left">Item Category</th>
+                                        <th class="py-3 px-4 text-left">Payment Platform</th>
+                                        <th class="py-3 px-4 text-left">Refund Policy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">In-App Purchases (IAP)</td>
+                                        <td class="py-3 px-4">Google Play Store</td>
+                                        <td class="py-3 px-4">Subject to Google Play Store Policy</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">Virtual Currency / Skins</td>
+                                        <td class="py-3 px-4">Google Play Store</td>
+                                        <td class="py-3 px-4">Non-refundable after consumption</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4">Ad Removal Upgrades</td>
+                                        <td class="py-3 px-4">Google Play Store</td>
+                                        <td class="py-3 px-4">Permanent per developer account</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-4 bg-accent-pink/10 rounded-xl border border-accent-pink/30">
+                    <p class="text-gray-300 text-sm flex items-center">
+                        <i class="fas fa-exclamation-circle text-accent-pink mr-2"></i>
+                        <strong>Payment Notice:</strong> All payments are processed through the official app store billing systems. Nadeem Gaming Studio does not store or process your credit card or financial details directly.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 4: Intellectual Property -->
+            <div id="intellectual-property" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue flex items-center justify-center text-white text-xl font-bold mr-4">
+                        4
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-purple to-accent-blue bg-clip-text text-transparent">
+                            Intellectual Property Rights
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="p-6 bg-gray-800/50 rounded-2xl mb-6">
+                    <p class="text-gray-300 mb-6">
+                        All content included in our applications and games is the exclusive property of Nadeem Gaming Studio or its licensors. Intellectual property elements include:
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-accent-pink mr-3">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Game Assets & Source Code</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                All game artwork, character designs, animations, source code, UI elements, audio tracks, and sound effects belong solely to Nadeem Gaming Studio.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-accent-yellow mr-3">
+                                    <i class="fas fa-trademark"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Trademarks & Branding</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                The Nadeem Gaming Studio logo, title names, graphics, and brand marks are protected trademarks and cannot be used without explicit permission.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-900/50 rounded-xl">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-accent-green mr-3">
+                                    <i class="fas fa-photo-video"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white">Fan Content Policy</h4>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                You are welcome to create non-commercial gameplay videos, reviews, and streams of our games, provided you give appropriate credit to Nadeem Gaming Studio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-gray-800/50 rounded-2xl border border-accent-purple/30">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fas fa-shield-alt text-accent-purple mr-3"></i>
+                        Copyright Infringement Notice
+                    </h4>
+                    <p class="text-gray-300">
+                        If you believe any content in our games violates your copyright or intellectual property rights, please notify us immediately with full details via our contact email.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Section 5: Limitation of Liability -->
+            <div id="limitation-liability" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-blue to-accent-green flex items-center justify-center text-white text-xl font-bold mr-4">
+                        5
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-blue to-accent-green bg-clip-text text-transparent">
+                            Disclaimer & Limitation of Liability
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-blue text-center">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center">"As Is" Basis</h3>
+                        <p class="text-gray-300 text-center">
+                            Our games and services are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-green text-center">
+                            <i class="fas fa-shield-virus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-center">Service Availability</h3>
+                        <p class="text-gray-300 text-center">
+                            We do not guarantee uninterrupted, error-free, or virus-free operation of our applications, and reserve the right to update or modify features anytime.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 p-6 bg-gray-800/50 rounded-2xl">
+                    <h4 class="text-lg font-bold text-white mb-3">Limitation of Damages</h4>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        To the maximum extent permitted by applicable law, Nadeem Gaming Studio shall not be liable for any indirect, incidental, consequential, special, or punitive damages arising out of:
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-accent-yellow mr-2 mt-1"></i>
+                            <span class="text-gray-300">Your use or inability to use our games or services</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-accent-yellow mr-2 mt-1"></i>
+                            <span class="text-gray-300">Unauthorized access to or alteration of your device data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-chevron-right text-accent-yellow mr-2 mt-1"></i>
+                            <span class="text-gray-300">Statements, conduct, or actions of any third party within our apps</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Section 6: Contact & Governing Law -->
+            <div id="contact-governing" class="policy-section bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-accent-red to-accent-pink flex items-center justify-center text-white text-xl font-bold mr-4">
+                        6
+                    </div>
+                    <h2 class="text-3xl font-bold text-white">
+                        <span class="bg-gradient-to-r from-accent-red to-accent-pink bg-clip-text text-transparent">
+                            Governing Law & Contact Us
+                        </span>
+                    </h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-balance-scale text-accent-yellow mr-3"></i>
+                            Governing Law
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            These Terms shall be governed, construed, and enforced in accordance with the laws of India, without regard to its conflict of law principles.
+                        </p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-envelope text-accent-blue mr-3"></i>
+                            Contact Us
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            If you have questions or concerns regarding these Terms of Service, please reach out to us:
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="p-4 bg-gray-900/50 rounded-xl">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-globe text-accent-yellow mr-2"></i>
+                                    <span class="font-bold text-white">Website</span>
+                                </div>
+                                <a href="https://nadeemgamingstudio.github.io" class="text-accent-blue hover:underline">
+                                    https://nadeemgamingstudio.github.io
+                                </a>
+                            </div>
+                            
+                            <div class="p-4 bg-gray-900/50 rounded-xl">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-envelope text-accent-pink mr-2"></i>
+                                    <span class="font-bold text-white">Email</span>
+                                </div>
+                                <a href="mailto:nadeemgamer180@gmail.com" class="text-accent-blue hover:underline">
+                                    nadeemgamer180@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="https://nadeemgamingstudio.github.io/Contact" 
+                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent-pink to-accent-yellow text-white font-bold rounded-xl hover:shadow-glow transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-paper-plane mr-3"></i>
+                                Go to Contact Page
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-800/50 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-edit text-accent-green mr-3"></i>
+                            Modifications to Terms
+                        </h3>
+                        <p class="text-gray-300 mb-4">
+                            We reserve the right to revise or replace these Terms of Service at any time. Significant changes will be announced by updating the "Last Updated" date at the top of this page.
+                        </p>
+                        
+                        <div class="mt-4 p-4 bg-accent-yellow/10 rounded-xl border border-accent-yellow/30">
+                            <p class="text-gray-300 text-sm">
+                                <i class="fas fa-lightbulb text-accent-yellow mr-2"></i>
+                                <strong>Continued Agreement:</strong> By continuing to use or play our games after any revisions become effective, you agree to be bound by the updated terms.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- Call to Action -->
+        <section class="mt-16 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="bg-gradient-to-r from-accent-yellow/10 to-accent-pink/10 p-10 rounded-3xl border-2 border-dashed border-accent-yellow/50">
+                <h3 class="text-3xl font-bold text-white mb-6">
+                    Have Questions About Our Terms?
+                </h3>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    We want to ensure complete transparency. If anything in our Terms of Service is unclear, please contact our support team.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="https://nadeemgamingstudio.github.io/Contact" 
+                       class="px-8 py-4 bg-gradient-to-r from-accent-yellow to-accent-pink text-white font-bold rounded-xl hover:shadow-neon-yellow transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-headset text-xl mr-3"></i>
+                            Contact Support
+                        </span>
+                    </a>
+                    
+                    <a href="https://nadeemgamingstudio.github.io" 
+                       class="px-8 py-4 bg-gray-800 text-white font-bold rounded-xl border-2 border-gray-700 hover:border-accent-pink hover:shadow-neon-pink transition-all duration-300">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-home text-xl mr-3"></i>
+                            Back to Home
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 text-gray-400 text-sm">
+                    <p>
+                        <i class="fas fa-gamepad text-accent-yellow mr-2"></i>
+                        Thank you for playing games created by Nadeem Gaming Studio!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-2 border-accent-pink/30 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" class="h-10 w-10 rounded-xl">
+                        <span class="text-xl font-black tracking-wider text-white font-orbitron">NADEEM GAMING</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Creating fun, engaging and memorable gaming experiences for players worldwide.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-yellow pl-3">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://nadeemgamingstudio.github.io" class="text-gray-400 hover:text-accent-pink transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/Contact" class="text-gray-400 hover:text-accent-yellow transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/privacypolicy.html" class="text-gray-400 hover:text-accent-green transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-pink pl-3">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-pink hover:shadow-neon-pink transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-yellow hover:shadow-neon-yellow transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-blue hover:shadow-neon-blue transition duration-300">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-accent-purple hover:shadow-neon-pink transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-envelope text-accent-yellow mr-2"></i>
+                        nadeemgamer180@gmail.com
+                    </p>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        &copy; 2026 <span class="text-accent-yellow font-bold">Nadeem Gaming Studio</span>. All Rights Reserved.
+                    </div>
+                    <div>
+                        Crafted with <i class="fas fa-heart text-accent-pink mx-1"></i> by Mr. Nadeem
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: false,
+                offset: 100
+            });
+            
+            // Scroll to Top Button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for table of contents links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Simple Particle Effect
+            const particlesContainer = document.querySelector('.particles');
+            const colors = ['#FF0066', '#FBD534', '#00D4FF', '#9D4EDD', '#2ECC71'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+                
+                // Add animation
+                particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Typewriter Effect
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                setTimeout(() => {
+                    typewriterElement.style.animation = 'none';
+                    setTimeout(() => {
+                        typewriterElement.style.borderRight = 'none';
+                    }, 500);
+                }, 4000);
+            }
+            
+            // Highlight active section while scrolling
+            const sections = document.querySelectorAll('.policy-section');
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            
+            function highlightActiveSection() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-accent-green');
+                    link.classList.add('text-gray-400');
+                    
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.remove('text-gray-400');
+                        link.classList.add('text-accent-green');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightActiveSection);
+        });
+    </script>
+</body>
+</html>
